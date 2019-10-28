@@ -38,7 +38,7 @@ export default class TextArea extends React.Component<TextAreaProps, TextAreaSta
 
   public saveTextarea = (node: HTMLTextAreaElement) => {
     this.textArea = node;
-  }
+  };
 
   public handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
     const { onPressEnter, onKeyDown } = this.props;
@@ -48,7 +48,7 @@ export default class TextArea extends React.Component<TextAreaProps, TextAreaSta
     if (onKeyDown) {
       onKeyDown(e);
     }
-  }
+  };
 
   public handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     if (!('value' in this.props)) {
@@ -58,7 +58,7 @@ export default class TextArea extends React.Component<TextAreaProps, TextAreaSta
     if (onChange) {
       onChange(e);
     }
-  }
+  };
 
   public resizeTextarea = () => {
     const { autosize } = this.props;
@@ -94,15 +94,15 @@ export default class TextArea extends React.Component<TextAreaProps, TextAreaSta
     this.setState({ textAreaStyles, resizing: true }, () => {
       this.setState({ resizing: false });
     });
-  }
+  };
 
   public focus = () => {
     this.textArea.focus();
-  }
+  };
 
   public blur = () => {
     this.textArea.blur();
-  }
+  };
 
   public render() {
     const { style, className, ...otherProps } = this.props;

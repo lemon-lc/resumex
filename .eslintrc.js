@@ -15,6 +15,6 @@ module.exports = {
     // 一个缩进必须用两个空格替代
     indent: ['error', 2],
     '@typescript-eslint/member-ordering': 0,
-    'no-invalid-this': 0,
+    'no-invalid-this': 0
   }
 };
