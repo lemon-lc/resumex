@@ -3,17 +3,15 @@ const merge = require('webpack-merge');
 const base = require('./webpack.base');
 const TerserPlugin = require('terser-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-module.exports  = merge(base, {
+module.exports = merge(base, {
   mode: 'production',
-  entry: [
-    path.resolve(__dirname, '../src/index.tsx'),
-  ],
+  entry: [path.resolve(__dirname, '../src/index.tsx')],
   output: {
     filename: '[name].[chunkhash:8].js',
-    chunkFilename: '[name].[chunkhash:8].chunk.js',
+    chunkFilename: '[name].[chunkhash:8].chunk.js'
   },
   module: {
     rules: [
@@ -27,7 +25,7 @@ module.exports  = merge(base, {
             options: { importLoaders: 1 }
           },
           'postcss-loader'
-        ],
+        ]
       },
       {
         test: /\.less$/,
@@ -40,8 +38,8 @@ module.exports  = merge(base, {
           },
           'postcss-loader',
           'less-loader'
-        ],
-      },
+        ]
+      }
     ]
   },
   optimization: {
@@ -51,19 +49,19 @@ module.exports  = merge(base, {
         terserOptions: {
           warnings: false,
           compress: {
-            comparisons: false,
+            comparisons: false
           },
           parse: {},
           mangle: true,
           output: {
             comments: false,
-            ascii_only: true,
-          },
+            ascii_only: true
+          }
         },
         parallel: true,
         cache: true,
-        sourceMap: true,
-      }),
+        sourceMap: true
+      })
     ],
     nodeEnv: 'production',
     sideEffects: true,
@@ -79,21 +77,21 @@ module.exports  = merge(base, {
         commons: {
           test: /[\\/]node_modules[\\/]/,
           name: 'vendor',
-          chunks: 'all',
+          chunks: 'all'
         },
         main: {
           chunks: 'all',
           minChunks: 2,
           reuseExistingChunk: true,
-          enforce: true,
-        },
-      },
+          enforce: true
+        }
+      }
     },
-    runtimeChunk: true,
+    runtimeChunk: true
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: "[name].[contenthash:8].css",
+      filename: '[name].[contenthash:8].css'
     }),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, '../public/index.html'),
@@ -108,22 +106,20 @@ module.exports  = merge(base, {
         keepClosingSlash: true,
         minifyJS: true,
         minifyCSS: true,
-        minifyURLs: true,
+        minifyURLs: true
       },
-      inject: true,
+      inject: true
     }),
     new CompressionPlugin({
       algorithm: 'gzip',
       test: /\.js$|\.css$|\.html$/,
       threshold: 10240,
-      minRatio: 0.8,
-    }),
-
+      minRatio: 0.8
+    })
   ],
   devtool: 'eval-source-map',
 
   performance: {
-    assetFilter: assetFilename =>
-      !/(\.map$)|(^(main\.|favicon\.))/.test(assetFilename),
-  },
+    assetFilter: assetFilename => !/(\.map$)|(^(main\.|favicon\.))/.test(assetFilename)
+  }
 });

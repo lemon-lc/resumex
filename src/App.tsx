@@ -9,11 +9,8 @@ import Resume from './containers/resume';
 import './assets/style/index.less';
 import './assets/style/normalize.less';
 
-
 export default class App extends Component {
   public render() {
-    return (
-      <Resume />
-    );
+    return <Resume />;
   }
 }

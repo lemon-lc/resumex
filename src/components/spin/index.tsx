@@ -10,17 +10,12 @@ export interface SpinProps {
   style?: React.CSSProperties;
 }
 
-const DefaultIndicator = () => <span className="lemon-spin-indicator"/>;
+const DefaultIndicator = () => <span className="lemon-spin-indicator" />;
 
 const Spin: React.SFC<SpinProps> = ({ spinning, children, mask, indicator, style }) => {
-  const node = indicator || <DefaultIndicator/>;
+  const node = indicator || <DefaultIndicator />;
   return (
-    <BaseSpin
-      spinning={spinning}
-      indicator={node}
-      mask={mask}
-      style={style}
-    >
+    <BaseSpin spinning={spinning} indicator={node} mask={mask} style={style}>
       {children}
     </BaseSpin>
   );

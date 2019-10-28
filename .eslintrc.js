@@ -1,6 +1,4 @@
 /**
- * 题库组 ESLint 规则 - React
- *
  * 包含所有 ESLint 规则，以及所有 eslint-plugin-react 规则
  * 使用 babel-eslint 作为解析器
  *
@@ -9,17 +7,14 @@
  */
 
 module.exports = {
-  extends: 'eslint-config-alloy/react',
+  extends: ['alloy', 'alloy/react', 'alloy/typescript'],
+  plugins: [],
   rules: {
     // 这里填入你的项目需要的个性化配置，比如：
     //
     // 一个缩进必须用两个空格替代
-    "indent": [
-        true,
-        "spaces",
-        2
-    ],
-    "member-ordering": false,
-    "arrow-parens":  [true, "ban-single-arg-parens"]
+    indent: [true, 'spaces', 2],
+    'member-ordering': false,
+    'arrow-parens': [true, 'ban-single-arg-parens']
   }
 };

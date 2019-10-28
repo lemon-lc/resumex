@@ -10,13 +10,7 @@ export interface SpinProps {
   indicator: React.ReactNode;
 }
 
-const Spin: React.SFC<SpinProps> = ({
-  spinning,
-  children,
-  style,
-  mask,
-  indicator
-}) => {
+const Spin: React.SFC<SpinProps> = ({ spinning, children, style, mask, indicator }) => {
   const [_spinning, setSpinning] = React.useState(spinning || true);
 
   React.useEffect(() => {

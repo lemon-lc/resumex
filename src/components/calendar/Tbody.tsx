@@ -11,14 +11,12 @@ export interface TBodyProps {
 }
 
 export default class TBody extends React.Component<TBodyProps> {
-  public componentDidMount() {
-
-  }
+  public componentDidMount() {}
 
   public handleClick = (day: day.Dayjs) => {
     const { onClick } = this.props;
     if (onClick) onClick(day);
-  }
+  };
 
   public renderDays() {
     const days: day.Dayjs[] = [];
@@ -69,11 +67,7 @@ export default class TBody extends React.Component<TBodyProps> {
           {el.map(item => {
             const currentString = item.format('YYYY年MM月DD日');
             return (
-              <td
-                className={className(item)}
-                title={currentString}
-                key={currentString}
-              >
+              <td className={className(item)} title={currentString} key={currentString}>
                 <div className="l-calendar-date" onClick={() => this.handleClick(item)}>
                   <span className="l-calendar-cell-value">{item.format('DD')}</span>
                 </div>

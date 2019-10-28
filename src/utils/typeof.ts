@@ -16,6 +16,10 @@ export const isObject: (value: any) => boolean = value => {
 export const isFunction: (value: any) => boolean = value => {
   if (!isObject(value)) return false;
   const tag = getTag(value);
-  return tag === '[object Function]' || tag === '[object AsyncFunction]' ||
-    tag === '[object GeneratorFunction]' || tag === '[object Proxy]';
+  return (
+    tag === '[object Function]' ||
+    tag === '[object AsyncFunction]' ||
+    tag === '[object GeneratorFunction]' ||
+    tag === '[object Proxy]'
+  );
 };

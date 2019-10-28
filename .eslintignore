@@ -3,5 +3,3 @@ lib/*
 es/*
 dist/*
 build/*
-**/*.d.ts
-typings

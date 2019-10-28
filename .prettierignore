@@ -5,3 +5,10 @@ internals/scripts/
 package-lock.json
 yarn.lock
 package.json
+.DS_Store
+.editorconfig
+.eslintignore
+.gitignore
+.prettierignore
+.stylelintrc
+favicon.ico

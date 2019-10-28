@@ -10,12 +10,7 @@ export interface AvatarProps {
   style?: React.CSSProperties;
 }
 
-const Avatar: React.SFC<AvatarProps> = ({
-  src,
-  alt = '头像',
-  className,
-  style
-}) => {
+const Avatar: React.SFC<AvatarProps> = ({ src, alt = '头像', className, style }) => {
   const [visible, setVisible] = React.useState(true);
 
   const classString = React.useMemo(() => {

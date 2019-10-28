@@ -5,9 +5,8 @@ interface ActionType {
   payload?: any;
 }
 
-function reducer (state = initialState, action: ActionType) {
+function reducer(state = initialState, action: ActionType) {
   switch (action.type) {
-
     default:
       return state;
   }

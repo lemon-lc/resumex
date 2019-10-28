@@ -51,10 +51,7 @@ const CheckBox: React.SFC<CheckBoxProps> = ({
         value={value}
         type="checkbox"
       />
-      <Icon
-        className="t-checkbox-inner"
-        type={_checked ? 'checked' : 'unchecked'}
-      />
+      <Icon className="t-checkbox-inner" type={_checked ? 'checked' : 'unchecked'} />
       {children !== undefined && <span>{children}</span>}
     </label>
   );

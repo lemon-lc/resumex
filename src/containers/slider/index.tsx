@@ -14,14 +14,11 @@ const list1 = [
   { name: '日历', icon: 'calendar' }
 ];
 
-const list2 = [
-  { name: '时间轴', icon: 'timeline' },
-  { name: '废纸篓', icon: 'dustbin' }
-];
+const list2 = [{ name: '时间轴', icon: 'timeline' }, { name: '废纸篓', icon: 'dustbin' }];
 
 export default class Slider extends React.Component {
   public render() {
-    const today = (new Date()).getDate();
+    const today = new Date().getDate();
     return (
       <>
         <Menu style={{ margin: '16px 8px 4px' }}>

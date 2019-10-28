@@ -18,10 +18,14 @@ export default class Menu extends React.Component<MenuProps, {}> {
         {child}
       </div>
     ));
-  }
+  };
 
   public render() {
     const { style } = this.props;
-    return <div className="menu" style={style}>{this.renderComponent()}</div>;
+    return (
+      <div className="menu" style={style}>
+        {this.renderComponent()}
+      </div>
+    );
   }
 }

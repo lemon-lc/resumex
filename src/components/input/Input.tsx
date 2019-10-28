@@ -6,8 +6,7 @@ import TextArea from './TextArea';
 import { keyCodes } from '../../utils/contants';
 import './input.less';
 
-export interface InputProps
-  extends React.InputHTMLAttributes<HTMLInputElement> {
+export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   icon?: string;
   onPressEnter?: React.KeyboardEventHandler<HTMLInputElement>;
   addonBefore?: React.ReactNode;
@@ -22,8 +21,7 @@ export default class Input extends React.Component<InputProps, any> {
 
   public constructor(props: InputProps) {
     super(props);
-    const value =
-      typeof props.value === 'undefined' ? props.defaultValue : props.value;
+    const value = typeof props.value === 'undefined' ? props.defaultValue : props.value;
     this.state = {
       value
     };
@@ -40,7 +38,7 @@ export default class Input extends React.Component<InputProps, any> {
 
   private saveInput = (node: HTMLInputElement) => {
     this.input = node;
-  }
+  };
 
   private setValue(
     value: string,
@@ -78,25 +76,25 @@ export default class Input extends React.Component<InputProps, any> {
     if (onKeyDown) {
       onKeyDown(e);
     }
-  }
+  };
 
   private handleReset = (e: React.MouseEvent<HTMLElement, MouseEvent>) => {
     this.setValue('', e, () => {
       this.focus();
     });
-  }
+  };
 
   private handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     this.setValue(e.target.value, e);
-  }
+  };
 
   public focus = () => {
     this.input.focus();
-  }
+  };
 
   public blur = () => {
     this.input.blur();
-  }
+  };
 
   public render() {
     const {
@@ -125,9 +123,7 @@ export default class Input extends React.Component<InputProps, any> {
             ref={this.saveInput}
             value={value}
           />
-          {allowClear && !disabled && value && (
-            <Icon onClick={this.handleReset} type="close" />
-          )}
+          {allowClear && !disabled && value && <Icon onClick={this.handleReset} type="close" />}
         </span>
         {addonAfter}
       </span>

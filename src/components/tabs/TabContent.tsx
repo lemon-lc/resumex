@@ -10,15 +10,12 @@ const TabBar: React.SFC<TabBarProps> = ({ activeKey, children }) => {
   const [position, setPosition] = React.useState(0);
 
   const tabContents = React.useMemo(() => {
-    return React.Children.map(
-      children,
-      (child: { props: tabPaneProps; key: string }) => ({
-        content: child.props.children,
-        key: child.key,
-        placeholder: child.props.placeholder,
-        forceRender: child.props.forceRender
-      })
-    );
+    return React.Children.map(children, (child: { props: tabPaneProps; key: string }) => ({
+      content: child.props.children,
+      key: child.key,
+      placeholder: child.props.placeholder,
+      forceRender: child.props.forceRender
+    }));
   }, [children]);
 
   React.useEffect(() => {

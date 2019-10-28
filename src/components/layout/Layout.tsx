@@ -10,13 +10,7 @@ export interface LayoutProps {
   style?: React.CSSProperties;
 }
 
-const Layout: React.SFC<LayoutProps> = ({
-  aside,
-  main,
-  header,
-  className,
-  style
-}) => {
+const Layout: React.SFC<LayoutProps> = ({ aside, main, header, className, style }) => {
   const [visible, setVisible] = React.useState(false);
 
   const classString = React.useMemo(() => {

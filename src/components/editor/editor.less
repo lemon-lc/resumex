@@ -1,7 +1,6 @@
 .resumes-editor {
-  border: 1px solid #999;
-  border-radius: 4px;
-  background: eee;
+  border-radius: 2px;
+  box-shadow: 0 0 8px #999;
 
   .public-DraftEditor-content {
     min-height: 200px;
@@ -11,5 +10,17 @@
     margin: 0;
     padding: 8px 16px 16px;
     background: #eee;
+  }
+
+  &-header {
+    display: flex;
+
+    &-item {
+      padding: 8px;
+
+      &:hover {
+        color: red;
+      }
+    }
   }
 }

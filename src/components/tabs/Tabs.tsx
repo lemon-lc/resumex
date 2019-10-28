@@ -29,14 +29,8 @@ const getDefaultActiveKey: (props: TabsProps) => string = props => {
   return activeKey;
 };
 
-const activeKeyIsValid: (props: TabsProps, key: string) => boolean = (
-  props,
-  key
-) => {
-  const keys = React.Children.map(
-    props.children,
-    (child: any) => child && child.key
-  );
+const activeKeyIsValid: (props: TabsProps, key: string) => boolean = (props, key) => {
+  const keys = React.Children.map(props.children, (child: any) => child && child.key);
   return keys.indexOf(key) >= 0;
 };
 
@@ -83,7 +77,7 @@ export default class Tabs extends React.Component<TabsProps, TabsState> {
       this.tabBar.props.onTabClick(activeKey, e);
     }
     this.setActiveKey(activeKey);
-  }
+  };
 
   private setActiveKey: (key: string) => void = activeKey => {
     if (this.state.activeKey !== activeKey) {
@@ -97,7 +91,7 @@ export default class Tabs extends React.Component<TabsProps, TabsState> {
         onChange(activeKey);
       }
     }
-  }
+  };
 
   private renderContent = () => {
     const { renderTabBar, renderTabContent, children } = this.props;
@@ -117,14 +111,13 @@ export default class Tabs extends React.Component<TabsProps, TabsState> {
       onChange: this.setActiveKey
     };
     this.tabBar = renderTabBar && isFunction(renderTabBar) && renderTabBar();
-    const tabBar = this.tabBar
-       ? (
-        React.cloneElement(this.tabBar, {
-          ...tabBarProps
-        })
-      ) : (
-        <TabBar key="tabBar" {...tabBarProps} />
-      );
+    const tabBar = this.tabBar ? (
+      React.cloneElement(this.tabBar, {
+        ...tabBarProps
+      })
+    ) : (
+      <TabBar key="tabBar" {...tabBarProps} />
+    );
 
     const tabContent =
       renderTabContent && isFunction(renderTabContent) ? (
@@ -136,9 +129,13 @@ export default class Tabs extends React.Component<TabsProps, TabsState> {
       );
 
     return [tabBar, tabContent];
-  }
+  };
 
   public render() {
-    return <div className="tabs" style={this.props.style}>{this.renderContent()}</div>;
+    return (
+      <div className="tabs" style={this.props.style}>
+        {this.renderContent()}
+      </div>
+    );
   }
 }
