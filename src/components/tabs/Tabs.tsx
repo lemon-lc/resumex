@@ -77,7 +77,7 @@ export default class Tabs extends React.Component<TabsProps, TabsState> {
       this.tabBar.props.onTabClick(activeKey, e);
     }
     this.setActiveKey(activeKey);
-  };
+  }
 
   private setActiveKey: (key: string) => void = activeKey => {
     if (this.state.activeKey !== activeKey) {
@@ -91,7 +91,7 @@ export default class Tabs extends React.Component<TabsProps, TabsState> {
         onChange(activeKey);
       }
     }
-  };
+  }
 
   private renderContent = () => {
     const { renderTabBar, renderTabContent, children } = this.props;
@@ -129,7 +129,7 @@ export default class Tabs extends React.Component<TabsProps, TabsState> {
       );
 
     return [tabBar, tabContent];
-  };
+  }
 
   public render() {
     return (

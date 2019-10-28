@@ -21,17 +21,17 @@ export default class Calendar extends React.Component<CalendarProps> {
 
   private handleSetCurrent = (day: day.Dayjs) => {
     this.setState({ current: day });
-  };
+  }
 
   private handleClickPrevMonth = () => {
     const { current } = this.state;
     this.handleSetCurrent(current.subtract(1, 'month'));
-  };
+  }
 
   private handleClickNextMonth = () => {
     const { current } = this.state;
     this.handleSetCurrent(current.add(1, 'month'));
-  };
+  }
 
   public render() {
     const { fullscreen } = this.props;

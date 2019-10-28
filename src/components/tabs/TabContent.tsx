@@ -1,6 +1,6 @@
 import * as React from 'react';
 import './tabContent.less';
-import { tabPaneProps } from './TabPane';
+import { TabPaneProps } from './TabPane';
 
 export interface TabBarProps {
   activeKey: string;
@@ -10,7 +10,7 @@ const TabBar: React.SFC<TabBarProps> = ({ activeKey, children }) => {
   const [position, setPosition] = React.useState(0);
 
   const tabContents = React.useMemo(() => {
-    return React.Children.map(children, (child: { props: tabPaneProps; key: string }) => ({
+    return React.Children.map(children, (child: { props: TabPaneProps; key: string }) => ({
       content: child.props.children,
       key: child.key,
       placeholder: child.props.placeholder,

@@ -9,7 +9,7 @@ export default class MenuItem extends React.Component<MenuProps, {}> {
   private renderIcon = () => {
     const { icon } = this.props;
     return <span className="menu-item-icon">{icon}</span>;
-  };
+  }
 
   private renderComponent = () => {
     const { icon, children } = this.props;
@@ -19,7 +19,7 @@ export default class MenuItem extends React.Component<MenuProps, {}> {
         {children}
       </span>
     );
-  };
+  }
 
   public render() {
     return <div className="menu-item">{this.renderComponent()}</div>;

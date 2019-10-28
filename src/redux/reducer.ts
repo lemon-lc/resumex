@@ -7,8 +7,8 @@ interface ActionType {
 
 function reducer(state = initialState, action: ActionType) {
   switch (action.type) {
-    default:
-      return state;
+  default:
+    return state;
   }
 }
 

@@ -16,7 +16,7 @@ export default class TBody extends React.Component<TBodyProps> {
   public handleClick = (day: day.Dayjs) => {
     const { onClick } = this.props;
     if (onClick) onClick(day);
-  };
+  }
 
   public renderDays() {
     const days: day.Dayjs[] = [];

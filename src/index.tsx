@@ -8,6 +8,7 @@ import history from './utils/history';
 const store = configureStore({}, history);
 
 const renderApp = () =>
+  // eslint-disable-next-line react/no-render-return-value
   ReactDOM.render(
     <Provider store={store}>
       <App />
