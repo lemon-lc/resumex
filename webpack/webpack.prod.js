@@ -120,6 +120,7 @@ module.exports = merge(base, {
   devtool: 'eval-source-map',
 
   performance: {
-    assetFilter: assetFilename => !/(\.map$)|(^(main\.|favicon\.))/.test(assetFilename)
+    assetFilter: assetFilename =>
+      !/(\.map$)|(^(main\.|favicon\.))/.test(assetFilename)
   }
 });
