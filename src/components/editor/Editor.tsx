@@ -1,4 +1,5 @@
 import React from 'react';
+import * as copy from 'copy-to-clipboard';
 import {
   convertToRaw,
   CompositeDecorator,
@@ -13,6 +14,7 @@ import Link from './Link';
 
 import 'draft-js/dist/Draft.css';
 import './editor.less';
+import Icon from '../icon/Icon';
 
 function findLinkEntities(
   contentBlock: ContentBlock,
@@ -46,6 +48,7 @@ const INLINE_STYLES = [
 
 function MyEditor() {
   const [editorState, setEditorState] = React.useState(EditorState.createEmpty(decorator));
+  const [copied, setCopied] = React.useState(false);
 
   const handleKeyCommand = (command: string, editorState: EditorState) => {
     const newState = RichUtils.handleKeyCommand(editorState, command);
@@ -69,54 +72,79 @@ function MyEditor() {
     console.log(convertToRaw(editorState.getCurrentContent()));
   };
 
-  return React.useMemo(() => (
-    <div className="resumes-editor">
-      <ul className="resumes-editor-header">
-        {INLINE_STYLES.map(el => (
+  const handleCopy = () => {
+    const text = editorState.getCurrentContent().getPlainText();
+    const success = copy.default(text);
+    console.log(success, 'handleCopy');
+    setCopied(success);
+  };
+
+  const handleMouseLeave = () => {
+    console.log(copied, 'handleMouseLeave');
+    if (copied) {
+      console.log(copied, '--handleMouseLeave');
+      setCopied(false);
+    }
+  };
+
+  return React.useMemo(
+    () => (
+      <div className="resumes-editor">
+        <ul className="resumes-editor-header">
+          {INLINE_STYLES.map(el => (
+            <li
+              className="resumes-editor-header-item"
+              key={el.label}
+              onClick={() => _onStyleClick(el.style)}
+            >
+              <Icon type={el.label} />
+            </li>
+          ))}
+          {BLOCK_TYPES.map(el => (
+            <li
+              className="resumes-editor-header-item"
+              key={el.label}
+              onClick={() => _toggleBlockType(el.style)}
+            >
+              <Icon type={el.label} />
+            </li>
+          ))}
           <li
             className="resumes-editor-header-item"
-            key={el.label}
-            onClick={() => _onStyleClick(el.style)}
+            onClick={() => {
+              const contentState = editorState.getCurrentContent();
+              const contentStateWithEntity = contentState.createEntity('LINK', 'MUTABLE', {
+                url: 'http://www.baidu.com'
+              });
+              const entityKey = contentStateWithEntity.getLastCreatedEntityKey();
+              const newEditorState = EditorState.set(editorState, {
+                currentContent: contentStateWithEntity
+              });
+              setEditorState(
+                RichUtils.toggleLink(newEditorState, newEditorState.getSelection(), entityKey)
+              );
+            }}
           >
-            <Icon type={el.label}/>
+            <Icon type="link" />
           </li>
-        ))}
-        {BLOCK_TYPES.map(el => (
           <li
             className="resumes-editor-header-item"
-            key={el.label}
-            onClick={() => _toggleBlockType(el.style)}
+            onClick={handleCopy}
+            onMouseLeave={handleMouseLeave}
           >
-            <Icon type={el.label}/>
+            <Icon type={copied ? 'check' : 'file-copy'} />
           </li>
-        ))}
-        <li
-          className="resumes-editor-header-item"
-          onClick={() => {
-            const contentState = editorState.getCurrentContent();
-            const contentStateWithEntity = contentState.createEntity('LINK', 'MUTABLE', {
-              url: 'http://www.baidu.com'
-            });
-            const entityKey = contentStateWithEntity.getLastCreatedEntityKey();
-            const newEditorState = EditorState.set(editorState, {
-              currentContent: contentStateWithEntity
-            });
-            setEditorState(
-              RichUtils.toggleLink(newEditorState, newEditorState.getSelection(), entityKey)
-            );
-          }}
-        >
-          <Icon type="link"/>
-        </li>
-      </ul>
-      <button onClick={handleGetContent}>content</button>
-      <Editor
-        editorState={editorState}
-        handleKeyCommand={handleKeyCommand}
-        onChange={setEditorState}
-      />
-    </div>
-  ), [editorState]);
+        </ul>
+        <button onClick={handleGetContent}>content</button>
+        <Editor
+          editorState={editorState}
+          handleKeyCommand={handleKeyCommand}
+          onChange={setEditorState}
+        />
+      </div>
+    ),
+    [editorState, copied]
+  );
 }
 
 export default MyEditor;

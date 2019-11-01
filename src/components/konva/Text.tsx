@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { Text } from 'react-konva';
 
-export interface TextProps extends Text{
-  onLoad: (params: {height: number; width: number}) => void
+export interface TextProps extends Text {
+  onLoad: (params: { height: number; width: number }) => void;
 }
 
-const _Text: React.FC<TextProps> = ({ onLoad, ...rest}) => {
+const _Text: React.FC<TextProps> = ({ onLoad, ...rest }) => {
   const textRef = React.useRef<any>(null);
 
   React.useEffect(() => {
@@ -16,10 +16,10 @@ const _Text: React.FC<TextProps> = ({ onLoad, ...rest}) => {
       height = current.height();
       width = current.width();
     }
-    onLoad({ height, width })
-  }, [rest])
+    onLoad({ height, width });
+  }, [rest]);
 
-  return <Text {...rest} ref={textRef}/>
-}
+  return <Text {...rest} ref={textRef} />;
+};
 
 export default _Text;

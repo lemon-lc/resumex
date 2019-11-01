@@ -1,5 +1,5 @@
 Arguments: 
-  /usr/local/bin/node /usr/local/bin/yarn add immutable @type/immutable
+  /usr/local/bin/node /usr/local/bin/yarn add @type/copy-to-clipboard -D
 
 PATH: 
   /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
@@ -14,7 +14,7 @@ Platform:
   darwin x64
 
 Trace: 
-  Error: https://registry.npm.taobao.org/@type%2fimmutable: Not found
+  Error: https://registry.npm.taobao.org/@type%2fcopy-to-clipboard: Not found
       at Request.params.callback [as _callback] (/usr/local/lib/node_modules/yarn/lib/cli.js:65894:18)
       at Request.self.callback (/usr/local/lib/node_modules/yarn/lib/cli.js:129018:22)
       at Request.emit (events.js:189:13)
@@ -57,6 +57,7 @@ npm manifest:
       "@types/draft-js": "^0.10.37",
       "@types/history": "^4.7.3",
       "@types/react": "^16.9.2",
+      "@types/react-copy-to-clipboard": "^4.3.0",
       "@types/react-dom": "^16.9.0",
       "@types/react-redux": "^7.1.2",
       "@types/react-router-dom": "^4.3.5",
@@ -107,12 +108,17 @@ npm manifest:
       "@babel/polyfill": "^7.4.4",
       "classnames": "^2.2.6",
       "connected-react-router": "^6.5.2",
+      "copy-to-clipboard": "^3.2.0",
       "dayjs": "^1.8.16",
       "draft-js": "^0.11.1",
       "history": "^4.10.1",
+      "konva": "^4.0.16",
       "prop-types": "^15.7.2",
       "react": "^16.9.0",
+      "react-canvas": "^1.3.0",
+      "react-copy-to-clipboard": "^5.0.1",
       "react-dom": "^16.9.0",
+      "react-konva": "^16.10.1-0",
       "react-redux": "^7.1.0",
       "react-router-dom": "^5.0.1",
       "redux": "^4.0.4",
@@ -1080,6 +1086,13 @@ Lockfile:
     resolved "http://npm.zmops.cc/@types%2fq/-/q-1.5.2.tgz#690a1475b84f2a884fd07cd797c00f5f31356ea8"
     integrity sha1-aQoUdbhPKohP0HzXl8APXzE1bqg=
   
+  "@types/react-copy-to-clipboard@^4.3.0":
+    version "4.3.0"
+    resolved "https://registry.npm.taobao.org/@types/react-copy-to-clipboard/download/@types/react-copy-to-clipboard-4.3.0.tgz#8e07becb4f11cfced4bd36038cb5bdf5c2658be5"
+    integrity sha1-jge+y08Rz87UvTYDjLW99cJli+U=
+    dependencies:
+      "@types/react" "*"
+  
   "@types/react-dom@^16.9.0":
     version "16.9.1"
     resolved "http://npm.zmops.cc/@types%2freact-dom/-/react-dom-16.9.1.tgz#79206237cba9532a9f870b1cd5428bef6b66378c"
@@ -1401,6 +1414,11 @@ Lockfile:
     version "5.1.0"
     resolved "https://registry.npm.taobao.org/acorn-jsx/download/acorn-jsx-5.1.0.tgz?cache=0&sync_timestamp=1570991424796&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Facorn-jsx%2Fdownload%2Facorn-jsx-5.1.0.tgz#294adb71b57398b0680015f0a38c563ee1db5384"
     integrity sha1-KUrbcbVzmLBoABXwo4xWPuHbU4Q=
+  
+  acorn@^5.0.0:
+    version "5.7.3"
+    resolved "http://npm.zmops.cc/acorn/-/acorn-5.7.3.tgz#67aa231bf8812974b85235a96771eb6bd07ea279"
+    integrity sha1-Z6ojG/iBKXS4UjWpZ3Hra9B+onk=
   
   acorn@^6.2.1:
     version "6.3.0"
@@ -1727,6 +1745,11 @@ Lockfile:
     resolved "http://npm.zmops.cc/balanced-match/-/balanced-match-1.0.0.tgz#89b4d199ab2bee49de164ea02b89ce462d71b767"
     integrity sha1-ibTRmasr7kneFk6gK4nORi1xt2c=
   
+  base64-js@0.0.8:
+    version "0.0.8"
+    resolved "http://npm.zmops.cc/base64-js/-/base64-js-0.0.8.tgz#1101e9544f4a76b1bc3b26d452ca96d7a35e7978"
+    integrity sha1-EQHpVE9KdrG8OybUUsqW16NeeXg=
+  
   base64-js@^1.0.2:
     version "1.3.1"
     resolved "http://npm.zmops.cc/base64-js/-/base64-js-1.3.1.tgz#58ece8cb75dd07e71ed08c736abc5fac4dbf8df1"
@@ -1897,6 +1920,16 @@ Lockfile:
     dependencies:
       fill-range "^7.0.1"
   
+  brfs@^1.3.0:
+    version "1.6.1"
+    resolved "http://npm.zmops.cc/brfs/-/brfs-1.6.1.tgz#b78ce2336d818e25eea04a0947cba6d4fb8849c3"
+    integrity sha1-t4ziM22BjiXuoEoJR8um1PuIScM=
+    dependencies:
+      quote-stream "^1.0.1"
+      resolve "^1.1.5"
+      static-module "^2.2.0"
+      through2 "^2.0.0"
+  
   brorand@^1.0.1:
     version "1.1.0"
     resolved "http://npm.zmops.cc/brorand/-/brorand-1.1.0.tgz#12c25efe40a45e3c323eb8675a0a0ce57b22371f"
@@ -1996,6 +2029,11 @@ Lockfile:
     version "0.2.13"
     resolved "http://npm.zmops.cc/buffer-crc32/-/buffer-crc32-0.2.13.tgz#0d333e3f00eac50aa1454abd30ef8c2a5d9a7242"
     integrity sha1-DTM+PwDqxQqhRUq9MO+MKl2ackI=
+  
+  buffer-equal@0.0.1:
+    version "0.0.1"
+    resolved "http://npm.zmops.cc/buffer-equal/-/buffer-equal-0.0.1.tgz#91bc74b11ea405bc916bc6aa908faafa5b4aac4b"
+    integrity sha1-kbx0sR6kBbyRa8aqkI+q+ltKrEs=
   
   buffer-fill@^1.0.0:
     version "1.0.0"
@@ -2531,7 +2569,7 @@ Lockfile:
     resolved "http://npm.zmops.cc/concat-map/-/concat-map-0.0.1.tgz#d8a96bd77fd68df7793a73036a3ba0d5405d477b"
     integrity sha1-2Klr13/Wjfd5OnMDajug1UBdR3s=
   
-  concat-stream@^1.5.0:
+  concat-stream@^1.5.0, concat-stream@~1.6.0:
     version "1.6.2"
     resolved "http://npm.zmops.cc/concat-stream/-/concat-stream-1.6.2.tgz#904bdf194cd3122fc675c77fc4ac3d4ff0fd1a34"
     integrity sha1-kEvfGUzTEi/Gdcd/xKw9T/D9GjQ=
@@ -2597,7 +2635,7 @@ Lockfile:
     resolved "http://npm.zmops.cc/content-type/-/content-type-1.0.4.tgz#e138cc75e040c727b1966fe5e5f8c9aee256fe3b"
     integrity sha1-4TjMdeBAxyexlm/l5fjJruJW/js=
   
-  convert-source-map@^1.1.0:
+  convert-source-map@^1.1.0, convert-source-map@^1.5.1:
     version "1.6.0"
     resolved "http://npm.zmops.cc/convert-source-map/-/convert-source-map-1.6.0.tgz#51b537a8c43e0f04dec1993bffcdd504e758ac20"
     integrity sha1-UbU3qMQ+DwTewZk7/83VBOdYrCA=
@@ -2631,6 +2669,13 @@ Lockfile:
     resolved "http://npm.zmops.cc/copy-descriptor/-/copy-descriptor-0.1.1.tgz#676f6eb3c39997c2ee1ac3a924fd6124748f578d"
     integrity sha1-Z29us8OZl8LuGsOpJP1hJHSPV40=
   
+  copy-to-clipboard@^3, copy-to-clipboard@^3.2.0:
+    version "3.2.0"
+    resolved "https://registry.npm.taobao.org/copy-to-clipboard/download/copy-to-clipboard-3.2.0.tgz#d2724a3ccbfed89706fac8a894872c979ac74467"
+    integrity sha1-0nJKPMv+2JcG+siolIcsl5rHRGc=
+    dependencies:
+      toggle-selection "^1.0.6"
+  
   core-js-compat@^3.1.1:
     version "3.2.1"
     resolved "http://npm.zmops.cc/core-js-compat/-/core-js-compat-3.2.1.tgz#0cbdbc2e386e8e00d3b85dc81c848effec5b8150"
@@ -2638,6 +2683,11 @@ Lockfile:
     dependencies:
       browserslist "^4.6.6"
       semver "^6.3.0"
+  
+  core-js@^1.0.0:
+    version "1.2.7"
+    resolved "http://npm.zmops.cc/core-js/-/core-js-1.2.7.tgz#652294c14651db28fa93bd2d5ff2983a4f08c636"
+    integrity sha1-ZSKUwUZR2yj6k70tX/KYOk8IxjY=
   
   core-js@^2.4.1:
     version "2.6.10"
@@ -3351,6 +3401,13 @@ Lockfile:
       immutable "~3.7.4"
       object-assign "^4.1.0"
   
+  duplexer2@~0.1.4:
+    version "0.1.4"
+    resolved "http://npm.zmops.cc/duplexer2/-/duplexer2-0.1.4.tgz#8b12dab878c0d69e3e7891051662a32fc6bddcc1"
+    integrity sha1-ixLauHjA1p4+eJEFFmKjL8a93ME=
+    dependencies:
+      readable-stream "^2.0.2"
+  
   duplexer3@^0.1.4:
     version "0.1.4"
     resolved "http://npm.zmops.cc/duplexer3/-/duplexer3-0.1.4.tgz#ee01dd1cac0ed3cbc7fdbea37dc0a8f1ce002ce2"
@@ -3512,6 +3569,30 @@ Lockfile:
     resolved "http://npm.zmops.cc/escape-string-regexp/-/escape-string-regexp-1.0.5.tgz#1b61c0562190a8dff6ae3bb2cf0200ca130b86d4"
     integrity sha1-G2HAViGQqN/2rjuyzwIAyhMLhtQ=
   
+  escodegen@^1.8.1:
+    version "1.12.0"
+    resolved "http://npm.zmops.cc/escodegen/-/escodegen-1.12.0.tgz#f763daf840af172bb3a2b6dd7219c0e17f7ff541"
+    integrity sha1-92Pa+ECvFyuzorbdchnA4X9/9UE=
+    dependencies:
+      esprima "^3.1.3"
+      estraverse "^4.2.0"
+      esutils "^2.0.2"
+      optionator "^0.8.1"
+    optionalDependencies:
+      source-map "~0.6.1"
+  
+  escodegen@~1.9.0:
+    version "1.9.1"
+    resolved "http://npm.zmops.cc/escodegen/-/escodegen-1.9.1.tgz#dbae17ef96c8e4bedb1356f4504fa4cc2f7cb7e2"
+    integrity sha1-264X75bI5L7bE1b0UE+kzC98t+I=
+    dependencies:
+      esprima "^3.1.3"
+      estraverse "^4.2.0"
+      esutils "^2.0.2"
+      optionator "^0.8.1"
+    optionalDependencies:
+      source-map "~0.6.1"
+  
   eslint-config-alloy@^3.0.0:
     version "3.0.0"
     resolved "https://registry.npm.taobao.org/eslint-config-alloy/download/eslint-config-alloy-3.0.0.tgz#4333c6189efc8d659a2ec2c27862dde4c095e1ba"
@@ -3637,15 +3718,15 @@ Lockfile:
       acorn-jsx "^5.1.0"
       eslint-visitor-keys "^1.1.0"
   
+  esprima@^3.1.3, esprima@~3.1.0:
+    version "3.1.3"
+    resolved "http://npm.zmops.cc/esprima/-/esprima-3.1.3.tgz#fdca51cee6133895e3c88d535ce49dbff62a4633"
+    integrity sha1-/cpRzuYTOJXjyI1TXOSdv/YqRjM=
+  
   esprima@^4.0.0:
     version "4.0.1"
     resolved "http://npm.zmops.cc/esprima/-/esprima-4.0.1.tgz#13b04cdb3e6c5d19df91ab6987a8695619b0aa71"
     integrity sha1-E7BM2z5sXRnfkatph6hpVhmwqnE=
-  
-  esprima@~3.1.0:
-    version "3.1.3"
-    resolved "http://npm.zmops.cc/esprima/-/esprima-3.1.3.tgz#fdca51cee6133895e3c88d535ce49dbff62a4633"
-    integrity sha1-/cpRzuYTOJXjyI1TXOSdv/YqRjM=
   
   esquery@^1.0.1:
     version "1.0.1"
@@ -3661,7 +3742,7 @@ Lockfile:
     dependencies:
       estraverse "^4.1.0"
   
-  estraverse@^4.0.0, estraverse@^4.1.0, estraverse@^4.1.1:
+  estraverse@^4.0.0, estraverse@^4.1.0, estraverse@^4.1.1, estraverse@^4.2.0:
     version "4.3.0"
     resolved "http://npm.zmops.cc/estraverse/-/estraverse-4.3.0.tgz#398ad3f3c5a24948be7725e83d11a7de28cdbd1d"
     integrity sha1-OYrT88WiSUi+dyXoPRGn3ijNvR0=
@@ -3889,6 +3970,16 @@ Lockfile:
     resolved "http://npm.zmops.cc/extsprintf/-/extsprintf-1.4.0.tgz#e2689f8f356fad62cca65a3a91c5df5f9551692f"
     integrity sha1-4mifjzVvrWLMplo6kcXfX5VRaS8=
   
+  falafel@^2.1.0:
+    version "2.1.0"
+    resolved "http://npm.zmops.cc/falafel/-/falafel-2.1.0.tgz#96bb17761daba94f46d001738b3cedf3a67fe06c"
+    integrity sha1-lrsXdh2rqU9G0AFzizzt86Z/4Gw=
+    dependencies:
+      acorn "^5.0.0"
+      foreach "^2.0.5"
+      isarray "0.0.1"
+      object-keys "^1.0.6"
+  
   fast-deep-equal@^2.0.1:
     version "2.0.1"
     resolved "http://npm.zmops.cc/fast-deep-equal/-/fast-deep-equal-2.0.1.tgz#7b05218ddf9667bf7f370bf7fdb2cb15fdd0aa49"
@@ -3963,6 +4054,19 @@ Lockfile:
     version "1.0.2"
     resolved "https://registry.npm.taobao.org/fbjs-css-vars/download/fbjs-css-vars-1.0.2.tgz#216551136ae02fe255932c3ec8775f18e2c078b8"
     integrity sha1-IWVRE2rgL+JVkyw+yHdfGOLAeLg=
+  
+  fbjs@^0.8.8:
+    version "0.8.17"
+    resolved "http://npm.zmops.cc/fbjs/-/fbjs-0.8.17.tgz#c4d598ead6949112653d6588b01a5cdcd9f90fdd"
+    integrity sha1-xNWY6taUkRJlPWWIsBpc3Nn5D90=
+    dependencies:
+      core-js "^1.0.0"
+      isomorphic-fetch "^2.1.1"
+      loose-envify "^1.0.0"
+      object-assign "^4.1.0"
+      promise "^7.1.1"
+      setimmediate "^1.0.5"
+      ua-parser-js "^0.7.18"
   
   fbjs@^1.0.0:
     version "1.0.0"
@@ -4212,6 +4316,11 @@ Lockfile:
     version "1.0.2"
     resolved "http://npm.zmops.cc/for-in/-/for-in-1.0.2.tgz#81068d295a8142ec0ac726c6e2200c30fb6d5e80"
     integrity sha1-gQaNKVqBQuwKxybG4iAMMPttXoA=
+  
+  foreach@^2.0.5:
+    version "2.0.5"
+    resolved "http://npm.zmops.cc/foreach/-/foreach-2.0.5.tgz#0bee005018aeb260d0a3af3ae658dd0136ec1b99"
+    integrity sha1-C+4AUBiusmDQo6865ljdATbsG5k=
   
   forever-agent@~0.6.1:
     version "0.6.1"
@@ -5806,6 +5915,11 @@ Lockfile:
     resolved "http://npm.zmops.cc/known-css-properties/-/known-css-properties-0.16.0.tgz#3f0597214db11a460df77cd44bcb39e263b9da6c"
     integrity sha1-PwWXIU2xGkYN93zUS8s54mO52mw=
   
+  konva@^4.0.16:
+    version "4.0.16"
+    resolved "http://npm.zmops.cc/konva/-/konva-4.0.16.tgz#be1b86a63b4035315b6993311488b0fa333bb127"
+    integrity sha1-vhuGpjtANTFbaZMxFIiw+jM7sSc=
+  
   lcid@^2.0.0:
     version "2.0.0"
     resolved "http://npm.zmops.cc/lcid/-/lcid-2.0.0.tgz#6ef5d2df60e52f82eb228a4c373e8d1f397253cf"
@@ -5850,6 +5964,15 @@ Lockfile:
     dependencies:
       prelude-ls "~1.1.2"
       type-check "~0.3.2"
+  
+  linebreak@^0.3.0:
+    version "0.3.0"
+    resolved "http://npm.zmops.cc/linebreak/-/linebreak-0.3.0.tgz#0526480a62c05bd679f3e9d99830e09c6a7d0ed6"
+    integrity sha1-BSZICmLAW9Z58+nZmDDgnGp9DtY=
+    dependencies:
+      base64-js "0.0.8"
+      brfs "^1.3.0"
+      unicode-trie "^0.3.0"
   
   lines-and-columns@^1.1.6:
     version "1.1.6"
@@ -6054,6 +6177,13 @@ Lockfile:
     dependencies:
       yallist "^3.0.2"
   
+  magic-string@^0.22.4:
+    version "0.22.5"
+    resolved "http://npm.zmops.cc/magic-string/-/magic-string-0.22.5.tgz#8e9cf5afddf44385c1da5bc2a6a0dbd10b03657e"
+    integrity sha1-jpz1r930Q4XB2lvCpqDb0QsDZX4=
+    dependencies:
+      vlq "^0.2.2"
+  
   make-dir@^1.0.0, make-dir@^1.2.0:
     version "1.3.0"
     resolved "http://npm.zmops.cc/make-dir/-/make-dir-1.3.0.tgz#79c1033b80515bd6d24ec9933e860ca75ee27f0c"
@@ -6208,6 +6338,13 @@ Lockfile:
     version "1.0.1"
     resolved "http://npm.zmops.cc/merge-descriptors/-/merge-descriptors-1.0.1.tgz#b00aaa556dd8b44568150ec9d1b953f3f90cbb61"
     integrity sha1-sAqqVW3YtEVoFQ7J0blT8/kMu2E=
+  
+  merge-source-map@1.0.4:
+    version "1.0.4"
+    resolved "http://npm.zmops.cc/merge-source-map/-/merge-source-map-1.0.4.tgz#a5de46538dae84d4114cc5ea02b4772a6346701f"
+    integrity sha1-pd5GU42uhNQRTMXqArR3KmNGcB8=
+    dependencies:
+      source-map "^0.5.6"
   
   merge2@^1.2.3:
     version "1.3.0"
@@ -6728,12 +6865,17 @@ Lockfile:
     resolved "http://npm.zmops.cc/object-inspect/-/object-inspect-1.6.0.tgz#c70b6cbf72f274aab4c34c0c82f5167bf82cf15b"
     integrity sha1-xwtsv3LydKq0w0wMgvUWe/gs8Vs=
   
+  object-inspect@~1.4.0:
+    version "1.4.1"
+    resolved "http://npm.zmops.cc/object-inspect/-/object-inspect-1.4.1.tgz#37ffb10e71adaf3748d05f713b4c9452f402cbc4"
+    integrity sha1-N/+xDnGtrzdI0F9xO0yUUvQCy8Q=
+  
   object-is@^1.0.1:
     version "1.0.1"
     resolved "http://npm.zmops.cc/object-is/-/object-is-1.0.1.tgz#0aa60ec9989a0b3ed795cf4d06f62cf1ad6539b6"
     integrity sha1-CqYOyZiaCz7Xlc9NBvYs8a1lObY=
   
-  object-keys@^1.0.11, object-keys@^1.0.12, object-keys@^1.1.1:
+  object-keys@^1.0.11, object-keys@^1.0.12, object-keys@^1.0.6, object-keys@^1.1.1:
     version "1.1.1"
     resolved "http://npm.zmops.cc/object-keys/-/object-keys-1.1.1.tgz#1c47f272df277f3b1daf061677d9c82e2322c60e"
     integrity sha1-HEfyct8nfzsdrwYWd9nILiMixg4=
@@ -6843,7 +6985,7 @@ Lockfile:
     dependencies:
       is-wsl "^1.1.0"
   
-  optionator@^0.8.2:
+  optionator@^0.8.1, optionator@^0.8.2:
     version "0.8.2"
     resolved "https://registry.npm.taobao.org/optionator/download/optionator-0.8.2.tgz#364c5e409d3f4d6301d6c0b4c05bba50180aeb64"
     integrity sha1-NkxeQJ0/TWMB1sC0wFu6UBgK62Q=
@@ -7050,6 +7192,11 @@ Lockfile:
     version "2.2.0"
     resolved "http://npm.zmops.cc/p-try/-/p-try-2.2.0.tgz#cb2868540e313d61de58fafbe35ce9004d5540e6"
     integrity sha1-yyhoVA4xPWHeWPr741zpAE1VQOY=
+  
+  pako@^0.2.5:
+    version "0.2.9"
+    resolved "http://npm.zmops.cc/pako/-/pako-0.2.9.tgz#f3f7522f4ef782348da8161bad9ecfd51bf83a75"
+    integrity sha1-8/dSL073gjSNqBYbrZ7P1Rv4OnU=
   
   pako@~1.0.5:
     version "1.0.10"
@@ -8110,7 +8257,7 @@ Lockfile:
     dependencies:
       asap "~2.0.3"
   
-  prop-types@^15.6.2, prop-types@^15.7.2:
+  prop-types@^15.5.8, prop-types@^15.6.2, prop-types@^15.7.2:
     version "15.7.2"
     resolved "http://npm.zmops.cc/prop-types/-/prop-types-15.7.2.tgz#52c41e75b8c87e72b9d9360e0206b99dcbffa6c5"
     integrity sha1-UsQedbjIfnK52TYOAga5ncv/psU=
@@ -8251,6 +8398,15 @@ Lockfile:
     resolved "http://npm.zmops.cc/quick-lru/-/quick-lru-1.1.0.tgz#4360b17c61136ad38078397ff11416e186dcfbb8"
     integrity sha1-Q2CxfGETatOAeDl/8RQW4Ybc+7g=
   
+  quote-stream@^1.0.1, quote-stream@~1.0.2:
+    version "1.0.2"
+    resolved "http://npm.zmops.cc/quote-stream/-/quote-stream-1.0.2.tgz#84963f8c9c26b942e153feeb53aae74652b7e0b2"
+    integrity sha1-hJY/jJwmuULhU/7rU6rnRlK34LI=
+    dependencies:
+      buffer-equal "0.0.1"
+      minimist "^1.1.3"
+      through2 "^2.0.0"
+  
   randombytes@^2.0.0, randombytes@^2.0.1, randombytes@^2.0.5:
     version "2.1.0"
     resolved "http://npm.zmops.cc/randombytes/-/randombytes-2.1.0.tgz#df6f84372f0270dc65cdf6291349ab7a473d4f2a"
@@ -8291,6 +8447,23 @@ Lockfile:
       minimist "^1.2.0"
       strip-json-comments "~2.0.1"
   
+  react-canvas@^1.3.0:
+    version "1.3.0"
+    resolved "http://npm.zmops.cc/react-canvas/-/react-canvas-1.3.0.tgz#ebf9eae6f588e524213235c5886ff5d558d7665f"
+    integrity sha1-6/nq5vWI5SQhMjXFiG/11VjXZl8=
+    dependencies:
+      fbjs "^0.8.8"
+      linebreak "^0.3.0"
+      scroller "git://github.com/mjohnston/scroller"
+  
+  react-copy-to-clipboard@^5.0.1:
+    version "5.0.1"
+    resolved "https://registry.npm.taobao.org/react-copy-to-clipboard/download/react-copy-to-clipboard-5.0.1.tgz#8eae107bb400be73132ed3b6a7b4fb156090208e"
+    integrity sha1-jq4Qe7QAvnMTLtO2p7T7FWCQII4=
+    dependencies:
+      copy-to-clipboard "^3"
+      prop-types "^15.5.8"
+  
   react-dom@^16.9.0:
     version "16.9.0"
     resolved "http://npm.zmops.cc/react-dom/-/react-dom-16.9.0.tgz#5e65527a5e26f22ae3701131bcccaee9fb0d3962"
@@ -8305,6 +8478,24 @@ Lockfile:
     version "16.9.0"
     resolved "http://npm.zmops.cc/react-is/-/react-is-16.9.0.tgz#21ca9561399aad0ff1a7701c01683e8ca981edcb"
     integrity sha1-IcqVYTmarQ/xp3AcAWg+jKmB7cs=
+  
+  react-konva@^16.10.1-0:
+    version "16.10.1-0"
+    resolved "http://npm.zmops.cc/react-konva/-/react-konva-16.10.1-0.tgz#f8cc2c95374933069e891a6c714c70d0fdc77e68"
+    integrity sha1-+MwslTdJMwaeiRpscUxw0P3Hfmg=
+    dependencies:
+      react-reconciler "^0.22.1"
+      scheduler "^0.16.1"
+  
+  react-reconciler@^0.22.1:
+    version "0.22.2"
+    resolved "http://npm.zmops.cc/react-reconciler/-/react-reconciler-0.22.2.tgz#e8a10374fec8fee7c5cd0cf3cd05626f1b134d3e"
+    integrity sha1-6KEDdP7I/ufFzQzzzQVibxsTTT4=
+    dependencies:
+      loose-envify "^1.1.0"
+      object-assign "^4.1.1"
+      prop-types "^15.6.2"
+      scheduler "^0.16.2"
   
   react-redux@^7.1.0:
     version "7.1.1"
@@ -8400,7 +8591,7 @@ Lockfile:
       parse-json "^5.0.0"
       type-fest "^0.6.0"
   
-  "readable-stream@1 || 2", readable-stream@^2.0.0, readable-stream@^2.0.1, readable-stream@^2.0.2, readable-stream@^2.0.6, readable-stream@^2.1.5, readable-stream@^2.2.2, readable-stream@^2.3.0, readable-stream@^2.3.3, readable-stream@^2.3.5, readable-stream@^2.3.6, readable-stream@~2.3.6:
+  "readable-stream@1 || 2", readable-stream@^2.0.0, readable-stream@^2.0.1, readable-stream@^2.0.2, readable-stream@^2.0.6, readable-stream@^2.1.5, readable-stream@^2.2.2, readable-stream@^2.3.0, readable-stream@^2.3.3, readable-stream@^2.3.5, readable-stream@^2.3.6, readable-stream@~2.3.3, readable-stream@~2.3.6:
     version "2.3.6"
     resolved "http://npm.zmops.cc/readable-stream/-/readable-stream-2.3.6.tgz#b11c27d88b8ff1fbe070643cf94b0c79ae1b0aaf"
     integrity sha1-sRwn2IuP8fvgcGQ8+UsMea4bCq8=
@@ -8724,7 +8915,7 @@ Lockfile:
     resolved "http://npm.zmops.cc/resolve-url/-/resolve-url-0.2.1.tgz#2c637fe77c893afd2a663fe21aa9080068e2052a"
     integrity sha1-LGN/53yJOv0qZj/iGqkIAGjiBSo=
   
-  resolve@^1.10.0, resolve@^1.12.0, resolve@^1.3.2:
+  resolve@^1.1.5, resolve@^1.10.0, resolve@^1.12.0, resolve@^1.3.2:
     version "1.12.0"
     resolved "http://npm.zmops.cc/resolve/-/resolve-1.12.0.tgz#3fc644a35c84a48554609ff26ec52b66fa577df6"
     integrity sha1-P8ZEo1yEpIVUYJ/ybsUrZvpXffY=
@@ -8859,6 +9050,14 @@ Lockfile:
       loose-envify "^1.1.0"
       object-assign "^4.1.1"
   
+  scheduler@^0.16.1, scheduler@^0.16.2:
+    version "0.16.2"
+    resolved "http://npm.zmops.cc/scheduler/-/scheduler-0.16.2.tgz#f74cd9d33eff6fc554edfb79864868e4819132c1"
+    integrity sha1-90zZ0z7/b8VU7ft5hkho5IGRMsE=
+    dependencies:
+      loose-envify "^1.1.0"
+      object-assign "^4.1.1"
+  
   schema-utils@^1.0.0:
     version "1.0.0"
     resolved "http://npm.zmops.cc/schema-utils/-/schema-utils-1.0.0.tgz#0b79a93204d7b600d4b2850d1f66c2a34951c770"
@@ -8883,6 +9082,10 @@ Lockfile:
     dependencies:
       ajv "^6.10.2"
       ajv-keywords "^3.4.1"
+  
+  "scroller@git://github.com/mjohnston/scroller":
+    version "0.0.1"
+    resolved "git://github.com/mjohnston/scroller#054c3349d5ff7474589eb7fbbb36708e5c48e435"
   
   seamless-immutable@^7.1.3:
     version "7.1.4"
@@ -9019,6 +9222,11 @@ Lockfile:
     dependencies:
       inherits "^2.0.1"
       safe-buffer "^5.0.1"
+  
+  shallow-copy@~0.0.1:
+    version "0.0.1"
+    resolved "http://npm.zmops.cc/shallow-copy/-/shallow-copy-0.0.1.tgz#415f42702d73d810330292cc5ee86eae1a11a170"
+    integrity sha1-QV9CcC1z2BAzApLMXuhurhoRoXA=
   
   shebang-command@^1.2.0:
     version "1.2.0"
@@ -9280,6 +9488,13 @@ Lockfile:
     resolved "http://npm.zmops.cc/state-toggle/-/state-toggle-1.0.2.tgz#75e93a61944116b4959d665c8db2d243631d6ddc"
     integrity sha1-dek6YZRBFrSVnWZcjbLSQ2Mdbdw=
   
+  static-eval@^2.0.0:
+    version "2.0.2"
+    resolved "http://npm.zmops.cc/static-eval/-/static-eval-2.0.2.tgz#2d1759306b1befa688938454c546b7871f806a42"
+    integrity sha1-LRdZMGsb76aIk4RUxUa3hx+AakI=
+    dependencies:
+      escodegen "^1.8.1"
+  
   static-extend@^0.1.1:
     version "0.1.2"
     resolved "http://npm.zmops.cc/static-extend/-/static-extend-0.1.2.tgz#60809c39cbff55337226fd5e0b520f341f1fb5c6"
@@ -9287,6 +9502,26 @@ Lockfile:
     dependencies:
       define-property "^0.2.5"
       object-copy "^0.1.0"
+  
+  static-module@^2.2.0:
+    version "2.2.5"
+    resolved "http://npm.zmops.cc/static-module/-/static-module-2.2.5.tgz#bd40abceae33da6b7afb84a0e4329ff8852bfbbf"
+    integrity sha1-vUCrzq4z2mt6+4Sg5DKf+IUr+78=
+    dependencies:
+      concat-stream "~1.6.0"
+      convert-source-map "^1.5.1"
+      duplexer2 "~0.1.4"
+      escodegen "~1.9.0"
+      falafel "^2.1.0"
+      has "^1.0.1"
+      magic-string "^0.22.4"
+      merge-source-map "1.0.4"
+      object-inspect "~1.4.0"
+      quote-stream "~1.0.2"
+      readable-stream "~2.3.3"
+      shallow-copy "~0.0.1"
+      static-eval "^2.0.0"
+      through2 "~2.0.3"
   
   "statuses@>= 1.4.0 < 2", "statuses@>= 1.5.0 < 2", statuses@~1.5.0:
     version "1.5.0"
@@ -9713,7 +9948,7 @@ Lockfile:
     resolved "https://registry.npm.taobao.org/text-table/download/text-table-0.2.0.tgz#7f5ee823ae805207c00af2df4a84ec3fcfa570b4"
     integrity sha1-f17oI66AUgfACvLfSoTsP8+lcLQ=
   
-  through2@^2.0.0:
+  through2@^2.0.0, through2@~2.0.3:
     version "2.0.5"
     resolved "http://npm.zmops.cc/through2/-/through2-2.0.5.tgz#01c1e39eb31d07cb7d03a96a70823260b23132cd"
     integrity sha1-AcHjnrMdB8t9A6lqcIIyYLIxMs0=
@@ -9747,6 +9982,11 @@ Lockfile:
     version "0.3.0"
     resolved "http://npm.zmops.cc/timsort/-/timsort-0.3.0.tgz#405411a8e7e6339fe64db9a234de11dc31e02bd4"
     integrity sha1-QFQRqOfmM5/mTbmiNN4R3DHgK9Q=
+  
+  tiny-inflate@^1.0.0:
+    version "1.0.2"
+    resolved "http://npm.zmops.cc/tiny-inflate/-/tiny-inflate-1.0.2.tgz#93d9decffc8805bd57eae4310f0b745e9b6fb3a7"
+    integrity sha1-k9nez/yIBb1X6uQxDwt0Xptvs6c=
   
   tiny-invariant@^1.0.2:
     version "1.0.6"
@@ -9811,6 +10051,11 @@ Lockfile:
       extend-shallow "^3.0.2"
       regex-not "^1.0.2"
       safe-regex "^1.1.0"
+  
+  toggle-selection@^1.0.6:
+    version "1.0.6"
+    resolved "https://registry.npm.taobao.org/toggle-selection/download/toggle-selection-1.0.6.tgz#6e45b1263f2017fa0acc7d89d78b15b8bf77da32"
+    integrity sha1-bkWxJj8gF/oKzH2J14sVuL932jI=
   
   toidentifier@1.0.0:
     version "1.0.0"
@@ -10007,6 +10252,14 @@ Lockfile:
     version "1.0.5"
     resolved "http://npm.zmops.cc/unicode-property-aliases-ecmascript/-/unicode-property-aliases-ecmascript-1.0.5.tgz#a9cc6cc7ce63a0a3023fc99e341b94431d405a57"
     integrity sha1-qcxsx85joKMCP8meNBuUQx1AWlc=
+  
+  unicode-trie@^0.3.0:
+    version "0.3.1"
+    resolved "http://npm.zmops.cc/unicode-trie/-/unicode-trie-0.3.1.tgz#d671dddd89101a08bac37b6a5161010602052085"
+    integrity sha1-1nHd3YkQGgi6w3tqUWEBBgIFIIU=
+    dependencies:
+      pako "^0.2.5"
+      tiny-inflate "^1.0.0"
   
   unified@^7.0.0:
     version "7.1.0"
@@ -10293,6 +10546,11 @@ Lockfile:
       replace-ext "1.0.0"
       unist-util-stringify-position "^1.0.0"
       vfile-message "^1.0.0"
+  
+  vlq@^0.2.2:
+    version "0.2.3"
+    resolved "http://npm.zmops.cc/vlq/-/vlq-0.2.3.tgz#8f3e4328cf63b1540c0d67e1b2778386f8975b26"
+    integrity sha1-jz5DKM9jsVQMDWfhsneDhviXWyY=
   
   vm-browserify@^1.0.1:
     version "1.1.0"
