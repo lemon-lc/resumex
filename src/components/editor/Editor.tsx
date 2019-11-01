@@ -33,15 +33,15 @@ const decorator = new CompositeDecorator([
 ]);
 
 const BLOCK_TYPES = [
-  { label: 'bullet', style: 'unordered-list-item' },
-  { label: 'ordered', style: 'ordered-list-item' }
+  { label: 'unorderedlist', style: 'unordered-list-item' },
+  { label: 'orderedlist', style: 'ordered-list-item' }
 ];
 
 const INLINE_STYLES = [
   { label: 'bold', style: 'BOLD' },
   { label: 'italic', style: 'ITALIC' },
   { label: 'underline', style: 'UNDERLINE' },
-  { label: 'strike', style: 'STRIKETHROUGH' }
+  { label: 'strikethrough', style: 'STRIKETHROUGH' }
 ];
 
 function MyEditor() {
@@ -69,7 +69,7 @@ function MyEditor() {
     console.log(convertToRaw(editorState.getCurrentContent()));
   };
 
-  return (
+  return React.useMemo(() => (
     <div className="resumes-editor">
       <ul className="resumes-editor-header">
         {INLINE_STYLES.map(el => (
@@ -116,7 +116,7 @@ function MyEditor() {
         onChange={setEditorState}
       />
     </div>
-  );
+  ), [editorState]);
 }
 
 export default MyEditor;
