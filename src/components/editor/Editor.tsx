@@ -95,7 +95,10 @@ function MyEditor() {
               'resumes-editor-header-active': currentStyle.has(el.style)
             })}
             key={el.label}
-            onClick={() => _onStyleClick(el.style)}
+            onMouseDown={(e) => {
+              e.preventDefault();
+              _onStyleClick(el.style)
+            }}
           >
             <Icon type={el.label} />
           </li>
@@ -104,14 +107,18 @@ function MyEditor() {
           <li
             className="resumes-editor-header-item"
             key={el.label}
-            onClick={() => _toggleBlockType(el.style)}
+            onMouseDown={(e) => {
+              e.preventDefault();
+              _toggleBlockType(el.style)
+            }}
           >
             <Icon type={el.label} />
           </li>
         ))}
         <li
           className="resumes-editor-header-item"
-          onClick={() => {
+          onMouseDown={(e) => {
+            e.preventDefault();
             const contentState = editorState.getCurrentContent();
             const contentStateWithEntity = contentState.createEntity('LINK', 'MUTABLE', {
               url: 'http://www.baidu.com'
@@ -129,7 +136,10 @@ function MyEditor() {
         </li>
         <li
           className="resumes-editor-header-item"
-          onClick={handleCopy}
+          onMouseDown={e => {
+            e.preventDefault();
+            handleCopy();
+          }}
           onMouseLeave={handleMouseLeave}
         >
           <Icon type={copied ? 'check' : 'file-copy'} />
