@@ -48,23 +48,33 @@ const INLINE_STYLES = [
 
 function MyEditor() {
   const [editorState, setEditorState] = React.useState(EditorState.createEmpty(decorator));
+  const [pureEditorState, setPureEditorState] = React.useState(EditorState.createEmpty(decorator));
   const [copied, setCopied] = React.useState(false);
 
-  const handleKeyCommand = (command: string, editorState: EditorState) => {
+  const onChange = React.useCallback((state: EditorState) => {
+    setEditorState(state);
+    const oldText = editorState.getCurrentContent().getPlainText()
+    const newText = state.getCurrentContent().getPlainText()
+    if(oldText !== newText) {
+      setPureEditorState(state);
+    }
+  }, [editorState])
+
+  const handleKeyCommand = React.useCallback((command: string, editorState: EditorState) => {
     const newState = RichUtils.handleKeyCommand(editorState, command);
     if (newState) {
-      setEditorState(newState);
+      onChange(newState);
       return 'handled';
     }
     return 'not-handled';
-  };
+  }, []);
 
   const _onStyleClick = (type: string) => {
-    setEditorState(RichUtils.toggleInlineStyle(editorState, type));
+    onChange(RichUtils.toggleInlineStyle(editorState, type));
   };
 
   const _toggleBlockType = (blockType: string) => {
-    setEditorState(RichUtils.toggleBlockType(editorState, blockType));
+    onChange(RichUtils.toggleBlockType(editorState, blockType));
   };
 
   const handleGetContent = () => {
@@ -84,7 +94,8 @@ function MyEditor() {
       setCopied(false);
     }
   };
-  const currentStyle = editorState.getCurrentInlineStyle();
+
+  const currentStyle = pureEditorState.getCurrentInlineStyle();
 
   return (
     <div className="resumes-editor">
@@ -149,7 +160,7 @@ function MyEditor() {
       <Editor
         editorState={editorState}
         handleKeyCommand={handleKeyCommand}
-        onChange={setEditorState}
+        onChange={onChange}
       />
     </div>
   );
