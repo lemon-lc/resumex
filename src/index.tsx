@@ -4,6 +4,8 @@ import { Provider } from 'react-redux';
 import App from './App';
 import configureStore from './redux';
 import history from './utils/history';
+import './assets/style/index.less';
+import './assets/style/normalize.less';
 
 const store = configureStore({}, history);
 

@@ -48,16 +48,11 @@ const INLINE_STYLES = [
 
 function MyEditor() {
   const [editorState, setEditorState] = React.useState(EditorState.createEmpty(decorator));
-  const [pureEditorState, setPureEditorState] = React.useState(EditorState.createEmpty(decorator));
   const [copied, setCopied] = React.useState(false);
 
-  const onChange = React.useCallback((state: EditorState) => {
-    setEditorState(state);
-    const oldText = editorState.getCurrentContent().getPlainText()
-    const newText = state.getCurrentContent().getPlainText()
-    if(oldText !== newText) {
-      setPureEditorState(state);
-    }
+  const onChange = React.useCallback((editorState: EditorState) => {
+    setEditorState(editorState);
+    console.log(editorState.toJS());
   }, [editorState])
 
   const handleKeyCommand = React.useCallback((command: string, editorState: EditorState) => {
@@ -95,7 +90,7 @@ function MyEditor() {
     }
   };
 
-  const currentStyle = pureEditorState.getCurrentInlineStyle();
+  const currentStyle = editorState.getCurrentInlineStyle();
 
   return (
     <div className="resumes-editor">
@@ -156,7 +151,6 @@ function MyEditor() {
           <Icon type={copied ? 'check' : 'file-copy'} />
         </li>
       </ul>
-      <button onClick={handleGetContent}>content</button>
       <Editor
         editorState={editorState}
         handleKeyCommand={handleKeyCommand}
