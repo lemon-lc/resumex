@@ -64,23 +64,23 @@ export default class ResumeEditor extends React.Component {
         </Section>
         <Section title="工作经历">
           <ul>
-            <li>添加工作经验</li>
+            <li>+添加工作经验</li>
           </ul>
         </Section>
         <Section title="教育经历">
           <h3>教育经历</h3>
           <ul>
-            <li>添加教育经历</li>
+            <li>+添加教育经历</li>
           </ul>
         </Section>
         <Section title="社交主页">
           <ul>
-            <li>添加社交主页</li>
+            <li>+添加社交主页</li>
           </ul>
         </Section>
         <Section title="专业技能">
           <ul>
-            <li>添加专业技能</li>
+            <li>+添加专业技能</li>
           </ul>
         </Section>
       </div>
