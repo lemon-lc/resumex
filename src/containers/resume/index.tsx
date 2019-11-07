@@ -1,5 +1,6 @@
 import * as React from 'react';
 import Editor from '../../components/editor';
+import Pane from '../../components/pane';
 import Section from './components/section';
 import Item from './components/item';
 
@@ -24,6 +25,14 @@ const JobIntention = [
   {title: '期望职业', key: 'jobTitle', type: 'input'},
   {title: '期望薪资', key: 'expectedSalary', type: 'input'},
 ]
+
+const Job = [
+  {title: '职位', key: 'status', type: 'input'},
+  {title: '起止时间', key: 'workplace', type: 'input'},
+  {title: '公司名称', key: 'jobTitle', type: 'input'},
+  {title: '所在城市', key: 'expectedSalary', type: 'input'},
+]
+
 
 export default class ResumeEditor extends React.Component {
   public render() {
@@ -64,6 +73,23 @@ export default class ResumeEditor extends React.Component {
         </Section>
         <Section title="工作经历">
           <ul>
+            <li>
+              <Pane title="职位" subTitle="工作起止时间">
+                <ul className="resume-editor-block">
+                  {BaseInfo.map(item => (
+                    <li
+                      key={item.key}
+                      className="resume-editor-item"
+                    >
+                      <Item
+                        title={item.title}
+                        value=""
+                        onChange={e => {console.log(item.key ,e.target.value)}}/>
+                    </li>
+                  ))}
+                </ul>
+              </Pane>
+            </li>
             <li>+添加工作经验</li>
           </ul>
         </Section>

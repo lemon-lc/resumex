@@ -1,6 +1,6 @@
 import classnames from 'classnames';
-import * as PropTypes from 'prop-types';
 import * as React from 'react';
+import { CSSTransition } from 'react-transition-group';
 import Icon from '../icon';
 
 import './pane.less';
@@ -18,12 +18,12 @@ export interface PaneProps {
   onChange?: (collapse: boolean) => void;
 }
 
-const CheckBox: React.SFC<PaneProps> = ({
+const Pane: React.SFC<PaneProps> = ({
   className,
   title,
   subTitle,
   collapse,
-  defaultCollapse = false,
+  defaultCollapse = true,
   children,
   disabled,
   disabledCollapse,
@@ -45,23 +45,21 @@ const CheckBox: React.SFC<PaneProps> = ({
           <h3>{title}</h3>
           {subTitle && <h4>{subTitle}</h4>}
         </div>
-        <div onClick={() => {
-          if(disabled || disabledCollapse) return;
-          setCollapsed(!collapsed)
-          if(onChange) onChange(!collapsed)
-        }}><Icon type="doubleleft"/></div>
+        <div
+          onClick={() => {
+            if (disabled || disabledCollapse) return;
+            setCollapsed(!collapsed);
+            if (onChange) onChange(!collapsed);
+          }}
+        >
+          <Icon type="doubleleft" />
+        </div>
       </div>
-      <span>{children}</span>
+      <CSSTransition in={!collapsed} timeout={200} classNames="pane-children">
+        <div className="pane-children">{children}</div>
+      </CSSTransition>
     </div>
   );
 };
 
-CheckBox.propTypes = {
-  className: PropTypes.string,
-  value: PropTypes.string,
-  disabled: PropTypes.bool,
-  style: PropTypes.any,
-  onChange: PropTypes.func,
-};
-
-export default CheckBox;
+export default Pane;
