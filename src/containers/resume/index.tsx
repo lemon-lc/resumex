@@ -26,7 +26,7 @@ const JobIntention = [
   {title: '期望薪资', key: 'expectedSalary', type: 'input'},
 ]
 
-const Job = [
+const JobInfos = [
   {title: '职位', key: 'status', type: 'input'},
   {title: '起止时间', key: 'workplace', type: 'input'},
   {title: '公司名称', key: 'jobTitle', type: 'input'},
@@ -72,32 +72,42 @@ export default class ResumeEditor extends React.Component {
           <Editor />
         </Section>
         <Section title="工作经历">
-          <ul>
-            <li>
-              <Pane title="职位" subTitle="工作起止时间">
-                <ul className="resume-editor-block">
-                  {BaseInfo.map(item => (
-                    <li
-                      key={item.key}
-                      className="resume-editor-item"
-                    >
-                      <Item
-                        title={item.title}
-                        value=""
-                        onChange={e => {console.log(item.key ,e.target.value)}}/>
-                    </li>
-                  ))}
-                </ul>
-              </Pane>
-            </li>
-            <li>+添加工作经验</li>
-          </ul>
+          <Pane title="职位" subTitle="工作起止时间">
+            <ul className="resume-editor-block">
+              {JobInfos.map(item => (
+                <li
+                  key={item.key}
+                  className="resume-editor-item"
+                >
+                  <Item
+                    title={item.title}
+                    value=""
+                    onChange={e => {console.log(item.key ,e.target.value)}}/>
+                </li>
+              ))}
+            </ul>
+            <Editor />
+          </Pane>
+          <div>+添加工作经验</div>
         </Section>
         <Section title="教育经历">
-          <h3>教育经历</h3>
-          <ul>
-            <li>+添加教育经历</li>
-          </ul>
+          <Pane title="职位" subTitle="工作起止时间">
+            <ul className="resume-editor-block">
+              {JobInfos.map(item => (
+                <li
+                  key={item.key}
+                  className="resume-editor-item"
+                >
+                  <Item
+                    title={item.title}
+                    value=""
+                    onChange={e => {console.log(item.key ,e.target.value)}}/>
+                </li>
+              ))}
+            </ul>
+            <Editor />
+          </Pane>
+          <div>+添加工作经验</div>
         </Section>
         <Section title="社交主页">
           <ul>

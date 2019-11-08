@@ -1,4 +1,4 @@
-import classnames from 'classnames';
+import cx from 'classnames';
 import * as React from 'react';
 import { CSSTransition } from 'react-transition-group';
 import Icon from '../icon';
@@ -33,26 +33,27 @@ const Pane: React.SFC<PaneProps> = ({
     !disabledCollapse || (collapse === undefined ? defaultCollapse : collapse)
   );
 
-  const classString = classnames(className, 'pane', {
+  const classString = cx(className, 'pane', {
     'pane-disabled': disabled,
     'pane-collapsed': collapsed
   });
 
   return (
     <div className={classString}>
-      <div>
-        <div>
-          <h3>{title}</h3>
-          {subTitle && <h4>{subTitle}</h4>}
+      <div className="pane-header">
+        <div className="pane-title">
+          <div>{title}</div>
+          {subTitle && <div className="pane-sub-title">{subTitle}</div>}
         </div>
         <div
+          className="pane-collapse-btn"
           onClick={() => {
             if (disabled || disabledCollapse) return;
             setCollapsed(!collapsed);
             if (onChange) onChange(!collapsed);
           }}
         >
-          <Icon type="doubleleft" />
+          <Icon type="down" />
         </div>
       </div>
       <CSSTransition in={!collapsed} timeout={200} classNames="pane-children">

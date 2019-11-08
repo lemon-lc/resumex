@@ -1,37 +1,72 @@
 .pane {
+  &-header {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &-title {
+    font-size: 16px;
+    color: #666;
+    font-weight: normal;
+    margin: 0 0 12px;
+  }
+
+  &-sub-title {
+    font-size: 12px;
+    color: #999;
+    font-weight: normal;
+    margin-top: 12px;
+  }
+
+  .pane-collapse-btn {
+    .iconfont {
+      display: inline-block;
+      transition: transform 300ms ease-in;
+      transform: rotate(180deg);
+    }
+  }
+
   &-children {
     overflow: hidden;
-    height: 0;
+    max-height: 0;
+    display: none;
   }
 
   &-children-enter {
-    height: auto;
+    display: block;
+    max-height: 999px;
     opacity: 0;
-    transform: scale(1, 0.5) translateY(-50%);
   }
 
   &-children-enter-active {
     opacity: 1;
-    transform: translateY(0);
-    transition: opacity 300ms, transform 300ms;
+    transition: opacity 300ms, max-height 300ms ease-in;
   }
 
   &-children-enter-done {
-    height: auto;
+    max-height: 999px;
+    display: block;
   }
 
   &-children-exit {
-    height: auto;
+    max-height: 0;
     opacity: 1;
   }
 
   &-children-exit-active {
     opacity: 0;
-    transform: scale(1, 0.5) translateY(-50%);
-    transition: opacity 300ms, transform 300ms;
+    transition: opacity 300ms, max-height 300ms ease-in;
   }
 
   &-children-exit-done {
     display: none;
+  }
+}
+
+.pane-collapsed {
+  .pane-collapse-btn {
+    .iconfont {
+      transform: rotate(0deg);
+    }
   }
 }
