@@ -5,9 +5,6 @@ import React, { Component } from 'react';
 // import Slider from './containers/slider';
 // import RouterMap from './router';
 import Resume from './containers/resume';
-import { Stage, Layer, Rect, Shape } from 'react-konva';
-
-import { Text } from './components/konva';
 
 import './assets/style/index.less';
 import './assets/style/normalize.less';

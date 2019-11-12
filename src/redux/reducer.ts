@@ -1,15 +1,8 @@
-const initialState = {};
+import { combineReducers } from 'redux';
+import editor from './editor';
 
-interface ActionType {
-  type: string;
-  payload?: any;
-}
+const rootReducer = combineReducers({
+  editor
+});
 
-function reducer(state = initialState, action: ActionType) {
-  switch (action.type) {
-  default:
-    return state;
-  }
-}
-
-export default reducer;
+export default rootReducer;
