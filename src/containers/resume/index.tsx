@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import Editor from '../../components/editor';
-import Pane from '../../components/pane';
+import Collapse from '../../components/collapse';
 import Section from './children/section';
 import Block from './children/block';
 
@@ -22,18 +22,18 @@ class ResumeEditor extends React.Component {
           <Editor />
         </Section>
         <Section title="工作经历">
-          <Pane title="职位" subTitle="工作起止时间">
+          <Collapse title="职位" subTitle="工作起止时间">
             <Block data={editor.jobInfos} />
 
             <Editor />
-          </Pane>
+          </Collapse>
           <div>+添加工作经验</div>
         </Section>
         <Section title="教育经历">
-          <Pane title="职位" subTitle="工作起止时间">
+          <Collapse title="职位" subTitle="工作起止时间">
             <Block data={editor.jobInfos} />
             <Editor />
-          </Pane>
+          </Collapse>
           <div>+添加工作经验</div>
         </Section>
         <Section title="社交主页">

@@ -3,9 +3,9 @@ import * as React from 'react';
 import { CSSTransition } from 'react-transition-group';
 import Icon from '../icon';
 
-import './pane.less';
+import './collapse.less';
 
-export interface PaneProps {
+export interface CollapseProps {
   className?: string;
   value?: string;
   collapse?: boolean;
@@ -18,7 +18,7 @@ export interface PaneProps {
   onChange?: (collapse: boolean) => void;
 }
 
-const Pane: React.SFC<PaneProps> = ({
+const Collapse: React.SFC<CollapseProps> = ({
   className,
   title,
   subTitle,
@@ -33,20 +33,20 @@ const Pane: React.SFC<PaneProps> = ({
     !disabledCollapse || (collapse === undefined ? defaultCollapse : collapse)
   );
 
-  const classString = cx(className, 'pane', {
-    'pane-disabled': disabled,
-    'pane-collapsed': collapsed
+  const classString = cx(className, 'collapse', {
+    'collapse-disabled': disabled,
+    'collapse-collapsed': collapsed
   });
 
   return (
     <div className={classString}>
-      <div className="pane-header">
-        <div className="pane-title">
+      <div className="collapse-header">
+        <div className="collapse-title">
           <div>{title}</div>
-          {subTitle && <div className="pane-sub-title">{subTitle}</div>}
+          {subTitle && <div className="collapse-sub-title">{subTitle}</div>}
         </div>
         <div
-          className="pane-collapse-btn"
+          className="collapse-collapse-btn"
           onClick={() => {
             if (disabled || disabledCollapse) return;
             setCollapsed(!collapsed);
@@ -56,11 +56,11 @@ const Pane: React.SFC<PaneProps> = ({
           <Icon type="down" />
         </div>
       </div>
-      <CSSTransition in={!collapsed} timeout={200} classNames="pane-children">
-        <div className="pane-children">{children}</div>
+      <CSSTransition in={!collapsed} timeout={200} classNames="collapse-children">
+        <div className="collapse-children">{children}</div>
       </CSSTransition>
     </div>
   );
 };
 
-export default Pane;
+export default Collapse;

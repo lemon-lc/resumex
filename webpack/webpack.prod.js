@@ -91,7 +91,8 @@ module.exports = merge(base, {
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: '[name].[contenthash:8].css'
+      filename: '[name].[contenthash:8].css',
+      chunkFilename: '[id].css'
     }),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, '../public/index.html'),
