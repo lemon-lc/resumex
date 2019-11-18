@@ -7,8 +7,6 @@ import createSagaMiddleware from 'redux-saga';
 import reducer from './reducer';
 import { helloSaga } from './sagas';
 
-export const store = createStore(reducer, applyMiddleware());
-
 export default function configureStore(initialState = {}, history: History) {
   const sagaMiddleware = createSagaMiddleware();
   const middlewares = [sagaMiddleware, routerMiddleware(history)];

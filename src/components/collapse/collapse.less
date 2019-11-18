@@ -5,31 +5,31 @@
   }
 
   &-title {
-    font-size: 16px;
+    margin: 0 0 12px;
     color: #666;
     font-weight: normal;
-    margin: 0 0 12px;
+    font-size: 16px;
   }
 
   &-sub-title {
-    font-size: 12px;
+    margin-top: 12px;
     color: #999;
     font-weight: normal;
-    margin-top: 12px;
+    font-size: 12px;
   }
 
   .pane-collapse-btn {
     .iconfont {
       display: inline-block;
-      transition: transform 300ms ease-in;
       transform: rotate(180deg);
+      transition: transform 300ms ease-in;
     }
   }
 
   &-children {
-    overflow: hidden;
-    max-height: 0;
     display: none;
+    max-height: 0;
+    overflow: hidden;
   }
 
   &-children-enter {
@@ -44,8 +44,8 @@
   }
 
   &-children-enter-done {
-    max-height: 999px;
     display: block;
+    max-height: 999px;
   }
 
   &-children-exit {

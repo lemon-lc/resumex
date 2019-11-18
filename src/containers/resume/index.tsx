@@ -7,9 +7,10 @@ import Block from './children/block';
 
 import './index.less';
 
-class ResumeEditor extends React.Component {
+// eslint-disable-next-line react/prefer-stateless-function
+class ResumeEditor extends React.Component<any> {
   public render() {
-    const editor = this.props.editor;
+    const {editor} = this.props;
     return (
       <div className="resume-editor">
         <Section title="基本信息">
@@ -47,8 +48,8 @@ class ResumeEditor extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({
-  editor: state.editor
+const mapStateToProps = (state: any) => ({
+  editor: state.editor,
 });
 
 export default connect(mapStateToProps)(ResumeEditor);

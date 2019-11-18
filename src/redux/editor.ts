@@ -9,26 +9,26 @@ const initialState = {
     { key: 'email', value: '' },
     { key: 'birthPlace', value: '' },
     { key: 'nationality', value: '' },
-    { key: 'drivingLicense', value: '' }
+    { key: 'drivingLicense', value: '' },
   ],
 
   jobIntention: [
     { key: 'status', value: '' },
     { key: 'workplace', value: '' },
     { key: 'jobTitle', value: '' },
-    { key: 'expectedSalary', value: '' }
+    { key: 'expectedSalary', value: '' },
   ],
 
   jobInfos: [
     { key: 'status', value: '' },
     { key: 'workplace', value: '' },
     { key: 'jobTitle', value: '' },
-    { key: 'expectedSalary', value: '' }
+    { key: 'expectedSalary', value: '' },
   ],
 
   websites: [{ key: 'label', value: '' }, { key: 'link', value: '' }],
 
-  skills: [{ key: 'skill', value: '' }, { key: 'level', value: '' }]
+  skills: [{ key: 'skill', value: '' }, { key: 'level', value: '' }],
 };
 
 interface ActionType {

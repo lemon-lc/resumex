@@ -18,11 +18,11 @@ export default class TextArea extends React.Component<TextAreaProps, TextAreaSta
 
   public state = {
     textAreaStyles: {},
-    resizing: false
+    resizing: false,
   };
 
   public static defaultProps = {
-    autosize: false
+    autosize: false,
   };
 
   public componentDidMount() {
@@ -30,8 +30,8 @@ export default class TextArea extends React.Component<TextAreaProps, TextAreaSta
   }
 
   public componentDidUpdate(prevProps: TextAreaProps) {
-    // Re-render with the new content then recalculate the height as required.
-    if (prevProps.value !== this.props.value) {
+    const { value } = this.props;
+    if (prevProps.value !== value) {
       this.resizeTextarea();
     }
   }
@@ -113,7 +113,7 @@ export default class TextArea extends React.Component<TextAreaProps, TextAreaSta
     const _style = {
       ...style,
       ...textAreaStyles,
-      ...(resizing ? { overflow: 'hidden' } : null)
+      ...(resizing ? { overflow: 'hidden' } : null),
     };
 
     return (

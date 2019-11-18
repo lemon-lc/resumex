@@ -16,17 +16,17 @@ const TabBar: React.SFC<TabBarProps> = ({ activeKey, panels, onTabClick }) => {
   const tabBars = React.useMemo(() => {
     return React.Children.map(panels, (child: { props: TabPaneProps; key: string }) => ({
       tab: child.props.tab,
-      key: child.key
+      key: child.key,
     }));
   }, [panels]);
 
   React.useEffect(() => {
     const node: HTMLElement | null = document.querySelector('.tab-bar-active');
     if (node) {
-      const width = node.offsetWidth;
-      const position = node.offsetLeft;
-      setWidth(width);
-      setPosition(position);
+      const w = node.offsetWidth;
+      const p = node.offsetLeft;
+      setWidth(w);
+      setPosition(p);
     }
   }, [activeKey]);
 
@@ -37,7 +37,7 @@ const TabBar: React.SFC<TabBarProps> = ({ activeKey, panels, onTabClick }) => {
           tabBars.map(el => (
             <li
               className={classnames('tab-bar-item', {
-                'tab-bar-active': el.key === activeKey
+                'tab-bar-active': el.key === activeKey,
               })}
               onClick={e => {
                 if (onTabClick) onTabClick(el.key, e);

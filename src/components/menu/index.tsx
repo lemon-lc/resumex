@@ -1,6 +1,3 @@
-import Menu from './menu';
-import MenuItem from './MenuItem';
-
-export { MenuItem as Item };
+import Menu from './Menu';
 
 export default Menu;

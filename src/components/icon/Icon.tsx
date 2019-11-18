@@ -9,7 +9,7 @@ export interface IconProps {
 
 const Icon: React.SFC<IconProps> = ({ type, onClick, className }) => {
   const classString = classnames('iconfont', className, {
-    [`icon-${type}`]: !!type
+    [`icon-${type}`]: !!type,
   });
 
   return <i className={classString} onClick={onClick} />;

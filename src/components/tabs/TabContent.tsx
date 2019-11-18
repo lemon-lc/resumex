@@ -14,7 +14,7 @@ const TabBar: React.SFC<TabBarProps> = ({ activeKey, children }) => {
       content: child.props.children,
       key: child.key,
       placeholder: child.props.placeholder,
-      forceRender: child.props.forceRender
+      forceRender: child.props.forceRender,
     }));
   }, [children]);
 

@@ -26,15 +26,15 @@ const CheckBox: React.SFC<CheckBoxProps> = ({
   defaultChecked = false,
   children,
   disabled,
-  onChange
+  onChange,
 }) => {
   const [_checked, setChecked] = React.useState<boolean>(
-    checked === undefined ? defaultChecked : checked
+    checked === undefined ? defaultChecked : checked,
   );
 
   const classString = classnames(className, 't-checkbox', {
     't-checkbox-disabled': disabled,
-    't-checkbox-checked': _checked
+    't-checkbox-checked': _checked,
   });
 
   return (
@@ -63,12 +63,7 @@ CheckBox.propTypes = {
   checked: PropTypes.bool,
   defaultChecked: PropTypes.bool,
   disabled: PropTypes.bool,
-  autoFocus: PropTypes.bool,
-  style: PropTypes.any,
   onChange: PropTypes.func,
-  onClick: PropTypes.func,
-  onKeyDown: PropTypes.func,
-  onKeyPress: PropTypes.func
 };
 
 export default CheckBox;

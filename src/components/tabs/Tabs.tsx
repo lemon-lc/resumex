@@ -37,8 +37,6 @@ const activeKeyIsValid: (props: TabsProps, key: string) => boolean = (props, key
 export default class Tabs extends React.Component<TabsProps, TabsState> {
   public tabBar: any;
 
-  public static TabPane = TabPane;
-
   public constructor(props: TabsProps) {
     super(props);
 
@@ -53,7 +51,7 @@ export default class Tabs extends React.Component<TabsProps, TabsState> {
     }
 
     this.state = {
-      activeKey
+      activeKey,
     };
   }
 
@@ -79,16 +77,17 @@ export default class Tabs extends React.Component<TabsProps, TabsState> {
     this.setActiveKey(activeKey);
   };
 
-  private setActiveKey: (key: string) => void = activeKey => {
-    if (this.state.activeKey !== activeKey) {
+  private setActiveKey: (key: string) => void = key => {
+    const { activeKey } = this.state;
+    if (activeKey !== key) {
       if (!('activeKey' in this.props)) {
         this.setState({
-          activeKey
+          activeKey: key,
         });
       }
       const { onChange } = this.props;
       if (onChange && isFunction(onChange)) {
-        onChange(activeKey);
+        onChange(key);
       }
     }
   };
@@ -101,19 +100,19 @@ export default class Tabs extends React.Component<TabsProps, TabsState> {
       key: 'tabBar',
       onTabClick: this.onTabClick,
       panels: children,
-      activeKey
+      activeKey,
     };
 
     const tabContentProps = {
       key: 'tabContent',
       activeKey,
       children,
-      onChange: this.setActiveKey
+      onChange: this.setActiveKey,
     };
     this.tabBar = renderTabBar && isFunction(renderTabBar) && renderTabBar();
     const tabBar = this.tabBar ? (
       React.cloneElement(this.tabBar, {
-        ...tabBarProps
+        ...tabBarProps,
       })
     ) : (
       <TabBar key="tabBar" {...tabBarProps} />
@@ -122,7 +121,7 @@ export default class Tabs extends React.Component<TabsProps, TabsState> {
     const tabContent =
       renderTabContent && isFunction(renderTabContent) ? (
         React.cloneElement(renderTabContent(), {
-          ...tabContentProps
+          ...tabContentProps,
         })
       ) : (
         <TabContent key="tabContent" {...tabContentProps} />
@@ -131,9 +130,12 @@ export default class Tabs extends React.Component<TabsProps, TabsState> {
     return [tabBar, tabContent];
   };
 
+  public static TabPane = TabPane;
+
   public render() {
+    const { style } = this.props;
     return (
-      <div className="tabs" style={this.props.style}>
+      <div className="tabs" style={style}>
         {this.renderContent()}
       </div>
     );

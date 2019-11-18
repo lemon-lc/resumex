@@ -3,13 +3,15 @@ import Item from '../item';
 import './index.less';
 
 interface ItemProps {
-  key: string;
+  key: ConfigKeys;
   value: string;
 }
 
 interface IProps {
   data: ItemProps[];
 }
+
+type ConfigKeys = 'name' | 'birthday' | 'sex' | 'city' | 'address' | 'phone' | 'email' | 'birthPlace' | 'nationality' | 'drivingLicense' | 'status' | 'workplace' | 'jobTitle' | 'expectedSalary' | 'job' | 'time' | 'company' | 'companyCity' | 'label' | 'link' | 'skill' | 'level';
 
 const config = {
   name: { label: '姓名', type: 'input', span: 12 },
@@ -33,23 +35,25 @@ const config = {
   label: { label: '名称', type: 'input', span: 12 },
   link: { label: '链接', type: 'input', span: 12 },
   skill: { label: '技能', type: 'input', span: 12 },
-  level: { label: '熟练度', type: 'input', span: 12 }
+  level: { label: '熟练度', type: 'input', span: 12 },
 };
 
 const Block: React.SFC<IProps> = ({ data }) => {
   return (
     <ul className="resume-editor-block">
-      {data.map(item => (
-        <Item
-          key={item.key}
-          span={config[item.key].span}
-          title={config[item.key].label}
-          value={item.value}
+      {data.map(item => {
+        const { key, value } = item;
+        const obj = config[key] || {};
+        return (<Item
+          key={key}
+          span={ obj.span}
+          title={obj.label}
+          value={value}
           onChange={e => {
             console.log(item.key, e.target.value);
           }}
-        />
-      ))}
+        />)
+      })}
     </ul>
   );
 };

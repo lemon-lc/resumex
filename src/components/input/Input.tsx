@@ -15,35 +15,29 @@ export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> 
 }
 
 export default class Input extends React.Component<InputProps, any> {
-  public static TextArea: typeof TextArea;
-
   private input: HTMLInputElement;
 
   public constructor(props: InputProps) {
     super(props);
     const value = typeof props.value === 'undefined' ? props.defaultValue : props.value;
     this.state = {
-      value
+      value,
     };
   }
 
   public static getDerivedStateFromProps(nextProps: InputProps) {
     if ('value' in nextProps) {
       return {
-        value: nextProps.value
+        value: nextProps.value,
       };
     }
     return null;
   }
 
-  private saveInput = (node: HTMLInputElement) => {
-    this.input = node;
-  };
-
   private setValue(
     value: string,
     e: React.ChangeEvent<HTMLInputElement> | React.MouseEvent<HTMLElement, MouseEvent>,
-    callback?: () => void
+    callback?: () => void,
   ) {
     if (!('value' in this.props)) {
       this.setState({ value }, callback);
@@ -67,6 +61,10 @@ export default class Input extends React.Component<InputProps, any> {
       onChange(event as React.ChangeEvent<HTMLInputElement>);
     }
   }
+
+  private saveInput = (node: HTMLInputElement) => {
+    this.input = node;
+  };
 
   private handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     const { onPressEnter, onKeyDown } = this.props;
@@ -96,6 +94,8 @@ export default class Input extends React.Component<InputProps, any> {
     this.input.blur();
   };
 
+  public static TextArea: typeof TextArea;
+
   public render() {
     const {
       icon,
@@ -105,7 +105,7 @@ export default class Input extends React.Component<InputProps, any> {
       disabled,
       style,
       placeholder,
-      className
+      className,
     } = this.props;
     const { value } = this.state;
     const classString = classnames('l-input-root', className);

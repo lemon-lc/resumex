@@ -1,3 +1,3 @@
 export const keyCodes = {
-  enterKeyCode: 13
+  enterKeyCode: 13,
 };

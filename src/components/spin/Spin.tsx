@@ -21,7 +21,7 @@ const Spin: React.SFC<SpinProps> = ({ spinning, children, style, mask, indicator
     'lemon-spin-wrap-child': children,
     'lemon-spin-wrap-parent': !children,
     'lemon-spin-mask': mask,
-    'lemon-spin-hide': !_spinning
+    'lemon-spin-hide': !_spinning,
   });
 
   return (

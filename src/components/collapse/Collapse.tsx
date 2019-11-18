@@ -27,15 +27,15 @@ const Collapse: React.SFC<CollapseProps> = ({
   children,
   disabled,
   disabledCollapse,
-  onChange
+  onChange,
 }) => {
   const [collapsed, setCollapsed] = React.useState<boolean>(
-    !disabledCollapse || (collapse === undefined ? defaultCollapse : collapse)
+    !disabledCollapse || (collapse === undefined ? defaultCollapse : collapse),
   );
 
   const classString = cx(className, 'collapse', {
     'collapse-disabled': disabled,
-    'collapse-collapsed': collapsed
+    'collapse-collapsed': collapsed,
   });
 
   return (

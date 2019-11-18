@@ -12,15 +12,15 @@ export interface CalendarProps {
 
 export default class Calendar extends React.Component<CalendarProps> {
   public static defaultProps = {
-    fullscreen: true
+    fullscreen: true,
   };
 
   public state = {
-    current: day()
+    current: day(),
   };
 
-  private handleSetCurrent = (day: day.Dayjs) => {
-    this.setState({ current: day });
+  private handleSetCurrent = (current: day.Dayjs) => {
+    this.setState({ current });
   };
 
   private handleClickPrevMonth = () => {
@@ -37,7 +37,7 @@ export default class Calendar extends React.Component<CalendarProps> {
     const { fullscreen } = this.props;
     const { current } = this.state;
     const classString = classnames('l-calendar', {
-      'l-calendar-fullscreen': fullscreen
+      'l-calendar-fullscreen': fullscreen,
     });
     return (
       <div className={classString}>

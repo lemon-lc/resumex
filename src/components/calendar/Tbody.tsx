@@ -13,14 +13,14 @@ export interface TBodyProps {
 export default class TBody extends React.Component<TBodyProps> {
   public componentDidMount() {}
 
-  public handleClick = (day: day.Dayjs) => {
+  public handleClick = (dayValue: day.Dayjs) => {
     const { onClick } = this.props;
-    if (onClick) onClick(day);
+    if (onClick) onClick(dayValue);
   };
 
   public renderDays() {
     const days: day.Dayjs[] = [];
-    const current = this.props.current;
+    const {current} = this.props;
     const currentStart: day.Dayjs = current.startOf('month');
     const currentEnd: day.Dayjs = current.endOf('month');
     const start = currentStart.startOf('week');
@@ -40,8 +40,8 @@ export default class TBody extends React.Component<TBodyProps> {
     }
 
     if (!current.isSame(end, 'month')) {
-      const length = end.diff(end.startOf('month'), 'day');
-      for (let i = length; i >= 0; i--) {
+      const len = end.diff(end.startOf('month'), 'day');
+      for (let i = len; i >= 0; i--) {
         days.push(end.subtract(i, 'day'));
       }
     }
@@ -58,11 +58,12 @@ export default class TBody extends React.Component<TBodyProps> {
         'l-calendar-next-cell': item.isAfter(current, 'month'),
         'l-calendar-cell-selected': item.isSame(current, 'day'),
         'l-calendar-first-day-of-month': item.startOf('month').isSame(item, 'day'),
-        'l-calendar-last-day-of-month': item.endOf('month').isSame(item, 'day')
+        'l-calendar-last-day-of-month': item.endOf('month').isSame(item, 'day'),
       });
     };
     return arr.map((el, index) => {
       return (
+        // eslint-disable-next-line react/no-array-index-key
         <tr key={index}>
           {el.map(item => {
             const currentString = item.format('YYYY年MM月DD日');

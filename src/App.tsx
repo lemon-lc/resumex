@@ -10,7 +10,7 @@ import './assets/style/index.less';
 import './assets/style/normalize.less';
 
 export default class App extends Component {
-  public state = { color: 'green' };
+  // public state = { color: 'green' };
 
   public componentDidMount() {}
 

@@ -2,13 +2,13 @@ import React from 'react';
 import cx from 'classnames';
 import * as copy from 'copy-to-clipboard';
 import {
-  convertToRaw,
+  // convertToRaw,
   CompositeDecorator,
   Editor,
   EditorState,
   RichUtils,
   ContentBlock,
-  ContentState
+  ContentState,
 } from 'draft-js';
 import Icon from '../icon';
 import Link from './Link';
@@ -19,7 +19,7 @@ import './editor.less';
 function findLinkEntities(
   contentBlock: ContentBlock,
   callback: (start: number, end: number) => void,
-  contentState: ContentState
+  contentState: ContentState,
 ) {
   contentBlock.findEntityRanges(character => {
     const entityKey = character.getEntity();
@@ -30,33 +30,33 @@ function findLinkEntities(
 const decorator = new CompositeDecorator([
   {
     strategy: findLinkEntities,
-    component: Link
-  }
+    component: Link,
+  },
 ]);
 
 const BLOCK_TYPES = [
   { label: 'unorderedlist', style: 'unordered-list-item' },
-  { label: 'orderedlist', style: 'ordered-list-item' }
+  { label: 'orderedlist', style: 'ordered-list-item' },
 ];
 
 const INLINE_STYLES = [
   { label: 'bold', style: 'BOLD' },
   { label: 'italic', style: 'ITALIC' },
   { label: 'underline', style: 'UNDERLINE' },
-  { label: 'strikethrough', style: 'STRIKETHROUGH' }
+  { label: 'strikethrough', style: 'STRIKETHROUGH' },
 ];
 
 function MyEditor() {
   const [editorState, setEditorState] = React.useState(EditorState.createEmpty(decorator));
   const [copied, setCopied] = React.useState(false);
 
-  const onChange = React.useCallback((editorState: EditorState) => {
-    setEditorState(editorState);
-    console.log(editorState.toJS());
+  const onChange = React.useCallback((state: EditorState) => {
+    setEditorState(state);
+    console.log(state.toJS());
   }, [editorState])
 
-  const handleKeyCommand = React.useCallback((command: string, editorState: EditorState) => {
-    const newState = RichUtils.handleKeyCommand(editorState, command);
+  const handleKeyCommand = React.useCallback((command: string, state: EditorState) => {
+    const newState = RichUtils.handleKeyCommand(state, command);
     if (newState) {
       onChange(newState);
       return 'handled';
@@ -72,10 +72,10 @@ function MyEditor() {
     onChange(RichUtils.toggleBlockType(editorState, blockType));
   };
 
-  const handleGetContent = () => {
-    console.log(editorState.getCurrentContent());
-    console.log(convertToRaw(editorState.getCurrentContent()));
-  };
+  // const handleGetContent = () => {
+  //   console.log(editorState.getCurrentContent());
+  //   console.log(convertToRaw(editorState.getCurrentContent()));
+  // };
 
   const handleCopy = () => {
     const text = editorState.getCurrentContent().getPlainText();
@@ -98,7 +98,7 @@ function MyEditor() {
         {INLINE_STYLES.map(el => (
           <li
             className={cx('resumes-editor-header-item', {
-              'resumes-editor-header-active': currentStyle.has(el.style)
+              'resumes-editor-header-active': currentStyle.has(el.style),
             })}
             key={el.label}
             onMouseDown={(e) => {
@@ -127,14 +127,14 @@ function MyEditor() {
             e.preventDefault();
             const contentState = editorState.getCurrentContent();
             const contentStateWithEntity = contentState.createEntity('LINK', 'MUTABLE', {
-              url: 'http://www.baidu.com'
+              url: 'http://www.baidu.com',
             });
             const entityKey = contentStateWithEntity.getLastCreatedEntityKey();
             const newEditorState = EditorState.set(editorState, {
-              currentContent: contentStateWithEntity
+              currentContent: contentStateWithEntity,
             });
             setEditorState(
-              RichUtils.toggleLink(newEditorState, newEditorState.getSelection(), entityKey)
+              RichUtils.toggleLink(newEditorState, newEditorState.getSelection(), entityKey),
             );
           }}
         >
