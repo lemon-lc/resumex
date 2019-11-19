@@ -49,7 +49,8 @@ module.exports = merge(base, {
         terserOptions: {
           warnings: false,
           compress: {
-            comparisons: false
+            comparisons: false,
+            drop_console: true
           },
           parse: {},
           mangle: true,
