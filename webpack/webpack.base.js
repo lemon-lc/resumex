@@ -13,6 +13,9 @@ module.exports = {
     filename: '[name].build.js',
     publicPath: '/'
   },
+  alias: {
+    '@utils': path.resolve(__dirname, '../src/utils')
+  },
   module: {
     rules: [
       {
