@@ -6,9 +6,6 @@ import React, { Component } from 'react';
 // import RouterMap from './router';
 import Resume from './containers/resume';
 
-import './assets/style/index.less';
-import './assets/style/normalize.less';
-
 export default class App extends Component {
   // public state = { color: 'green' };
 
@@ -16,7 +13,7 @@ export default class App extends Component {
 
   public render() {
     return (
-      <div>
+      <div className="resumex">
         <Resume />
       </div>
     );

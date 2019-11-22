@@ -13,7 +13,6 @@
     "declaration-empty-line-before": null
   },
   "ignoreFiles": [
-    "./src/assets/style/color/{bezierEasing,colorPalette,tinyColor}.less",
-    "./src/assets/style/normalize.less"
+    "./src/assets/style/color/{bezierEasing,colorPalette,tinyColor}.less"
   ]
 }

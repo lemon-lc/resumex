@@ -13,9 +13,6 @@ module.exports = {
     filename: '[name].build.js',
     publicPath: '/'
   },
-  alias: {
-    '@utils': path.resolve(__dirname, '../src/utils')
-  },
   module: {
     rules: [
       {
@@ -141,7 +138,10 @@ module.exports = {
   resolve: {
     modules: ['node_modules', 'src'],
     extensions: ['.js', '.jsx', '.ts', '.tsx'],
-    mainFields: ['browser', 'jsnext:main', 'main']
+    mainFields: ['browser', 'jsnext:main', 'main'],
+    alias: {
+      '@utils': path.resolve(__dirname, '../src/utils')
+    }
   },
   optimization: {
     splitChunks: {
