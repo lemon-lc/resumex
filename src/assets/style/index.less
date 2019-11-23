@@ -1,2 +1,33 @@
 @import './theme/index.less';
 @import './reset.less';
+
+.clearfix::before,
+.clearfix::after {
+  display: table;
+  content: '';
+}
+
+.clearfix::after {
+  clear: both;
+}
+
+.clearfix {
+  zoom: 1;
+}
+
+/* 强制文本换行 */
+.textwrap,
+.textwrap td,
+.textwrap th {
+  word-wrap: break-word;
+  word-break: break-all;
+}
+
+.textwrap-table {
+  table-layout: fixed;
+}
+
+/* 提供 serif 版本的字体设置: iOS 下中文自动 fallback 到 sans-serif */
+.serif {
+  font-family: Palatino, Optima, Georgia, serif;
+}

@@ -299,37 +299,6 @@ b {
   cursor: move;
 }
 
-.clearfix::before,
-.clearfix::after {
-  display: table;
-  content: '';
-}
-
-.clearfix::after {
-  clear: both;
-}
-
-.clearfix {
-  zoom: 1;
-}
-
-/* 强制文本换行 */
-.textwrap,
-.textwrap td,
-.textwrap th {
-  word-wrap: break-word;
-  word-break: break-all;
-}
-
-.textwrap-table {
-  table-layout: fixed;
-}
-
-/* 提供 serif 版本的字体设置: iOS 下中文自动 fallback 到 sans-serif */
-.serif {
-  font-family: Palatino, Optima, Georgia, serif;
-}
-
 /* 保证块/段落之间的空白隔行 */
 p,
 pre,
@@ -424,8 +393,8 @@ table caption {
 }
 
 /* 去除 webkit 中 input 和 textarea 的默认样式  */
-.resumex-input,
-.resumex-textarea {
+input,
+textarea {
   border-radius: 0;
   -webkit-appearance: none;
 }
@@ -435,12 +404,6 @@ legend,
 caption {
   color: #000;
   font-weight: inherit;
-}
-
-/* 着重号 */
-.resumex-em {
-  text-emphasis: fill circle;
-  text-emphasis-position: under left;
 }
 
 /* Responsive images */
