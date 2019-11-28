@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 // import Header from './containers/header';
 // import Slider from './containers/slider';
 // import RouterMap from './router';
+import Button from './components/button';
 import Resume from './containers/resume';
 
 export default class App extends Component {
@@ -15,6 +16,9 @@ export default class App extends Component {
     return (
       <div className="resumex">
         <Resume />
+        <Button>1232131</Button>
+        <Button>1232131</Button>
+
       </div>
     );
   }
