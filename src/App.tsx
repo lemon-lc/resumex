@@ -16,7 +16,7 @@ export default class App extends Component {
     return (
       <div className="resumex">
         <Resume />
-        <Button>1232131</Button>
+        <Button type="primary">1232131</Button>
         <Button>1232131</Button>
 
       </div>
