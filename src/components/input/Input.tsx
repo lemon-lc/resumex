@@ -108,14 +108,14 @@ export default class Input extends React.Component<InputProps, any> {
       className,
     } = this.props;
     const { value } = this.state;
-    const classString = classnames('l-input-root', className);
+    const classString = classnames('x-input-root', className);
     return (
       <span style={style} className={classString}>
         {addonBefore}
-        <span className="l-input-wrapper">
+        <span className="x-input-wrapper">
           {icon && <Icon type={icon} />}
           <input
-            className="l-input"
+            className="x-input"
             type="text"
             onKeyDown={this.handleKeyDown}
             onChange={this.handleChange}

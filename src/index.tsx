@@ -1,6 +1,7 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
+import "@babel/polyfill";
 import App from './App';
 import configureStore from './redux';
 import history from './utils/history';

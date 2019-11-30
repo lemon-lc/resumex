@@ -1,10 +1,5 @@
 import React, { Component } from 'react';
-// import { BrowserRouter as Router, Route } from 'react-router-dom';
-// import Layout from './components/layout';
-// import Header from './containers/header';
-// import Slider from './containers/slider';
-// import RouterMap from './router';
-import Button from './components/button';
+import Button from '@material-ui/core/Button';
 import Resume from './containers/resume';
 
 export default class App extends Component {
@@ -16,9 +11,19 @@ export default class App extends Component {
     return (
       <div className="resumex">
         <Resume />
-        <Button type="primary">1232131</Button>
-        <Button>1232131</Button>
-
+        <Button variant="contained">Default</Button>
+        <Button variant="contained" color="primary">
+          Primary
+        </Button>
+        <Button variant="contained" color="secondary">
+          Secondary
+        </Button>
+        <Button variant="contained" disabled>
+          Disabled
+        </Button>
+        <Button variant="contained" color="primary" href="#contained-buttons">
+          Link
+        </Button>
       </div>
     );
   }

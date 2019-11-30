@@ -18,7 +18,14 @@ module.exports = {
       {
         test: /\.tsx?$/,
         exclude: /node_modules/,
-        use: [{ loader: 'ts-loader', options: { transpileOnly: true } }]
+        use: [{
+          loader: 'awesome-typescript-loader',
+          options: {
+            useBabel: true,
+            useCache: true,
+            babelCore: '@babel/core',
+          }
+        }]
       },
       {
         test: /\.jsx?$/,
@@ -41,7 +48,6 @@ module.exports = {
       },
       {
         test: /\.less$/,
-        exclude: /node_modules/,
         use: [
           'style-loader',
           {
@@ -133,7 +139,11 @@ module.exports = {
     }),
     new webpack.EnvironmentPlugin({
       NODE_ENV: JSON.stringify(process.env.NODE_ENV)
-    })
+    }),
+    new webpack.ContextReplacementPlugin(
+      /moment[/\\]locale$/,
+      /zh-cn/
+    )
   ],
   resolve: {
     modules: ['node_modules', 'src'],

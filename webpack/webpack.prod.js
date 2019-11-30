@@ -17,7 +17,6 @@ module.exports = merge(base, {
     rules: [
       {
         test: /\.css$/,
-        exclude: /node_modules/,
         use: [
           MiniCssExtractPlugin.loader,
           {
