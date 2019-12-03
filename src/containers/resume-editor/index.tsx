@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-const Resume: React.FC = () => {
+const ResumeEditor: React.FC = () => {
   const [visible] = React.useState(false);
   const classes = useStyles();
   return (
@@ -55,4 +55,4 @@ const mapStateToProps = (state: any) => ({
   editor: state.editor,
 });
 
-export default connect(mapStateToProps)(Resume);
+export default connect(mapStateToProps)(ResumeEditor);
